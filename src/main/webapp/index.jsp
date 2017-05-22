@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hello GreenTea!</h2>
+<h2>Hello Project GreenTea!</h2>
 </body>
 </html>
