@@ -4,7 +4,7 @@
 <head>
     <!--- Basic Page Needs  -->
     <meta charset="utf-8">
-    <title>Green Project || Exercise Plan</title>
+    <title>Green Project || Profile Info</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
@@ -29,6 +29,41 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
             <![endif]-->
+            
+            
+             <link rel="stylesheet" type="text/css" href="css/lib/control/iconselect.css" >
+        <script type="text/javascript" src="lib/control/iconselect.js"></script>
+        
+        <script type="text/javascript" src="lib/iscroll.js"></script>
+        
+        <script>
+            
+        var iconSelect;
+
+        window.onload = function(){
+
+            iconSelect = new IconSelect("my-icon-select", 
+                {'selectedIconWidth':48,
+                'selectedIconHeight':48,
+                'selectedBoxPadding':5,
+                'iconsWidth':48,
+                'iconsHeight':48,
+                'boxIconSpace':3,
+                'vectoralIconNumber':3,
+                'horizontalIconNumber':1});
+
+            var icons = [];
+            icons.push({'iconFilePath':'images/icons/selectgender.png', 'iconValue':'1'});
+            icons.push({'iconFilePath':'images/icons/male.png', 'iconValue':'2'});
+            icons.push({'iconFilePath':'images/icons/female.jpg', 'iconValue':'3'});
+
+            
+            iconSelect.refresh(icons);
+
+        };
+            
+        </script>
+            
 </head>
 
 <body data-spy="scroll" data-target="#scroll-menu" data-offset="100">
@@ -290,285 +325,76 @@
         </div>
     </header>
     <!-- header-end -->
-    <!--my account section start-->
-    <div class="account-banner-sec" id="home">
-        <div class="account-profile">
-            <img src="img/profile/user1.jpg" alt="user image" />
-            <h2 class="p-name">johan smith</h2>
-            <p class="date">Joined February 22, 2017 </p>
-        </div>
-    </div>
-    <!--my account section end-->
-    <!--exercise-plan start-->
-    <div class="exercise-plan-area">
+    <!-- hero-section-start -->
+    <div class="hero-section" id="home">
         <div class="container">
             <div class="row">
-                <div class="col-md-2 col-sm-2 col-xs-4 xd-12">
-                    <div class="row">
-                        <div class="acc-category">
-                            <!-- Nav tabs -->
-                            <ul class="nav-item-area my-account-left" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab"><i class="fa fa-user-circle-o"></i>My profile</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link active" data-toggle="tab" href="#exercise" role="tab"><i class="fa fa-calendar"></i>Exercise Plan</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#signup" role="tab"><i class="fa fa-sign-out"></i>Sign out</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-10 col-sm-10 col-xs-8 xd-12">
-                    <div class="row">
-                        <div class="details-text-sec">
-                            <div class="col-xs-12">
-                                <div class="detail-text">
-                                    <h1 class="title">HIGH INTENSITY POWER TRAINING WORKOUTS FOR FAT LOSS, STRENGTH AND FITNESS</h1>
-                                    <p class="sub-t">Give these two high-volume routines a try to torch fat and build lean muscle.</p>
-                                    <div class="img-area">
-                                        <img src="img/exercise/exercise_plan.jpg" alt="exercise_plan" />
-                                        <div class="img-bottom">
-                                            <div class="ib-item">
-                                                <h5>DURATION</h5>
-                                                <h1>30 MIN</h1>
-                                            </div>
-                                            <div class="ib-item">
-                                                <h5>EXERCISES</h5>
-                                                <h1>12</h1>
-                                            </div>
-                                            <div class="ib-item">
-                                                <h5>EQUIPMENT</h5>
-                                                <h1><img src="img/exercise/check-icon.png" alt="ok" /></h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-<p><span class="bld-p">SEE ALSO:</span> 7 Reasons You Need HIIT</p>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-</div>
-</div>
-<div class="work-plan-sec">
-    <div class="work-plan">
-        <p class="title">HIPT WORKOUT A</p>
-        <div class="plan-item-area fst">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="row">
-                    <p class="title scnd">EXERCISE 1</p>
-                    <p class="title">CLEAN</p>
-                    <p>You'll successfull done</p>
-                    <a href="#">How to<i class="fa fa-angle-double-right"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="p-img-area">
-                    <img src="img/exercise/body.png" alt="body" />
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="wplan-right">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">3</p>
-                        <p>sets</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">7</p>
-                        <p>reps</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">1</p>
-                        <p>rest</p>
+                <div class="col-xs-12">
+                    <div class="hero-content">
+                        <h1 class="hc-header">Online Personal Training</h1>
+                        <p class="hc-text">Maximum Results in Minimum Time, no matter your location</p>
+                        <a class="hc-link" href="#">SELECT YOUR PLAN</a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="plan-item-area">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="row">
-                    <p class="title scnd">EXERCISE 2</p>
-                    <p class="title">CLEAN</p>
-                    <p>You'll successfull done</p>
-                    <a href="#">How to<i class="fa fa-angle-double-right"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="p-img-area">
-                    <img src="img/exercise/body.png" alt="body" />
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="wplan-right">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">11</p>
-                        <p>sets</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">7</p>
-                        <p>reps</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">1</p>
-                        <p>rest</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="plan-item-area">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="row">
-                    <p class="title scnd">EXERCISE 3</p>
-                    <p class="title">CLEAN</p>
-                    <p>You'll successfull done</p>
-                    <a href="#">How to<i class="fa fa-angle-double-right"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="p-img-area">
-                    <img src="img/exercise/body.png" alt="body" />
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="wplan-right">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">3</p>
-                        <p>sets</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">4</p>
-                        <p>reps</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">2</p>
-                        <p>rest</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="plan-item-area">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="row">
-                    <p class="title scnd">EXERCISE 4</p>
-                    <p class="title">CLEAN</p>
-                    <p>You'll successfull done</p>
-                    <a href="#">How to<i class="fa fa-angle-double-right"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="p-img-area">
-                    <img src="img/exercise/body.png" alt="body" />
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="wplan-right">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">3</p>
-                        <p>sets</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">7</p>
-                        <p>reps</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">1</p>
-                        <p>rest</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="plan-item-area">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="row">
-                    <p class="title scnd">EXERCISE 5</p>
-                    <p class="title">CLEAN</p>
-                    <p>You'll successfull done</p>
-                    <a href="#">How to<i class="fa fa-angle-double-right"></i></a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="p-img-area">
-                    <img src="img/exercise/body.png" alt="body" />
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-                <div class="wplan-right">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">4</p>
-                        <p>sets</p>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4">
-                        <p class="title">6</p>
-                        <p>reps</p>
-                    </div>
-                                     <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <p class="title">0</p>
-                                                <p>rest</p>
-                                            </div>
+    </div>
+    <!-- hero-section-end -->
+    <!-- personal-info-area-start -->
+
+    <div class="payment-info-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                
+                    <div class="payment-info">
+                        <h2 class="fp-title">PERSONAL INFO</h2>
+                        
+       
+                
+        
+                        
+                        <div class="row">
+                        
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="payment-info-content">
+                                    <div class="pic-package-name">
+                                                                      
+                                    <label>My Exercise Plan</label>
+                                        <select>
+                                            <option value="">Select Plan</option>
+                                            <option value="">Lean Mode</option>
+                                            <option value="">Healthy Mode</option>
+                                            <option value="">Beast Mode</option>
+                                        </select>
                                         </div>
+                                    <div class="pic-package-name">
+                                        <label>My Body Type</label>
+                                        <select>
+                                            <option value="">Select Type</option>
+                                            <option value="">Thin</option>
+                                            <option value="">Average</option>
+                                            <option value="">Strong</option>
+                                        </select>
                                     </div>
-                                </div>
-                                <div class="plan-item-area">
-                                    <div class="col-md-3 col-sm-3 col-xs-6">
-                                        <div class="row">
-                                            <p class="title scnd">EXERCISE 6</p>
-                                            <p class="title">CLEAN</p>
-                                            <p>You'll successfull done</p>
-                                            <a href="#">How to<i class="fa fa-angle-double-right"></i></a>
-                                        </div>
+                                    
+                                    <div class="pic-amount">
+                                    
+                                        <label>Weight</label>
+                                        <input type="text" placeholder="lbs">
+                                        <label>Height</label>
+                                        <input type="text" placeholder="inches">
+                                        <label>BMI</label>
+                                        <input type="text" placeholder="%">
                                     </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-6">
-                                        <div class="p-img-area">
-                                            <img src="img/exercise/body.png" alt="body" />
-                                        </div>
+                                    <div class="pic-amount">
+                                    <label>Select Gender</label>
+                                    <div style="position:absolute; left:195px; top:280px;" id="my-icon-select">Select Gender</div>
                                     </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <div class="wplan-right">
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <p class="title">9</p>
-                                                <p>sets</p>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <p class="title">7</p>
-                                                <p>reps</p>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <p class="title">1</p>
-                                                <p>rest</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="plan-item-area">
-                                    <div class="col-md-3 col-sm-3 col-xs-6">
-                                        <div class="row">
-                                            <p class="title scnd">EXERCISE 7</p>
-                                            <p class="title">CLEAN</p>
-                                            <p>You'll successfull done</p>
-                                            <a href="#">How to<i class="fa fa-angle-double-right"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-3 col-xs-6">
-                                        <div class="p-img-area">
-                                            <img src="img/exercise/body.png" alt="body" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6  col-sm-6 col-xs-12">
-                                        <div class="wplan-right">
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <p class="title">3</p>
-                                                <p>sets</p>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <p class="title">7</p>
-                                                <p>reps</p>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <p class="title">9</p>
-                                                <p>rest</p>
-                                            </div>
-                                        </div>
+                                    
+                                    
+                                    <div class="pic-submit">
+                                        <input class="hover-bs" type="submit" value="SUBMIT">
                                     </div>
                                 </div>
                             </div>
@@ -578,7 +404,52 @@
             </div>
         </div>
     </div>
-    <!--exercise-plan section end-->
+    
+    
+    
+    <!-- personal-info-area-end -->
+     <!-- payment-info-area-start -->
+    <div class="payment-info-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="payment-info">
+                        <h2 class="fp-title">PAYMENT INFO</h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="payment-info-content">
+                                    <div class="pic-package-name">
+                                        <label>Package Name</label>
+                                        <select>
+                                            <option value="">Select Package</option>
+                                            <option value="">Package 1</option>
+                                            <option value="">Package 2</option>
+                                            <option value="">Package 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="pic-amount">
+                                        <label>Amount</label>
+                                        <input type="text" placeholder="USD">
+                                    </div>
+                                    <div class="pic-have-coupon">
+                                        <a class="hover-bs" href="#">HAVE A COUPON?</a>
+                                    </div>
+                                    <div class="pic-agreement">
+                                        <input type="checkbox">
+                                        <label>I have read & accept the Terms & Conditions</label>
+                                    </div>
+                                    <div class="pic-submit">
+                                        <input class="hover-bs" type="submit" value="SUBMIT">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- payment-info-area-end -->
     <!--subscribe section start-->
     <div class="subscribe-section">
         <div class="container">
@@ -611,7 +482,7 @@
         </div>
     </div>
     <!--subscribe section end-->
-    <!--big footer section start-->
+    <!--big fotter section start-->
     <div class="big-fotter">
         <div class="container">
             <div class="row">

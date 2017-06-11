@@ -411,7 +411,7 @@ header {}
 
 .input-email::before {
     color: #d6d6d6;
-    content: "";
+    content: "ïƒ ";
     font-family: FontAwesome;
     font-size: 18px;
     left: 20px;
@@ -428,7 +428,7 @@ header {}
 
 .input-password::before {
     color: #d6d6d6;
-    content: "";
+    content: "ï‚„";
     font-family: FontAwesome;
     font-size: 18px;
     left: 20px;
@@ -545,7 +545,7 @@ header {}
     background: #fff none repeat scroll 0 0;
     border-radius: 100px;
     color: #33549c;
-    content: "";
+    content: "ï‚š";
     font-family: FontAwesome;
     font-size: 18px;
     height: 36px;
@@ -731,7 +731,7 @@ header {}
 .rf-input-email {}
 
 .rf-input-email::before {
-    content: "";
+    content: "ïƒ ";
 }
 
 .rf-input-email input[type="email"] {}
@@ -739,7 +739,7 @@ header {}
 .rf-input-name {}
 
 .rf-input-name::before {
-    content: "";
+    content: "ï€‡";
 }
 
 .rf-input-name input[type="text"] {}
@@ -747,7 +747,7 @@ header {}
 .rf-input-username {}
 
 .rf-input-username::before {
-    content: "";
+    content: "ïŠ¾";
 }
 
 .rf-input-username input[type="text"] {}
@@ -757,7 +757,7 @@ header {}
 }
 
 .rf-input-password::before {
-    content: "";
+    content: "ï‚„";
 }
 
 .rf-input-password input[type="password"] {}
@@ -805,7 +805,7 @@ header {}
 /*2.2 menu*/
 
 .menu-area {
-    background: #1a1a1a none repeat scroll 0 0;
+	background:#1a1a1a none repeat scroll 0 0;
     padding: 12px 0;
 }
 
@@ -1972,7 +1972,7 @@ header {}
 
 .single-success::before {
     color: #f0f0f0;
-    content: "";
+    content: "ï„�";
     font-family: FontAwesome;
     font-size: 50px;
     left: 0;
@@ -7415,6 +7415,7 @@ ul.days li.nm {
 }
 
 .pic-submit {
+    margin-top: 80px;
     margin-left: 180px;
 }
 
