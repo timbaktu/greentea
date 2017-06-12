@@ -31,37 +31,7 @@
             <![endif]-->
             
             
-             <link rel="stylesheet" type="text/css" href="css/lib/control/iconselect.css" >
-        <script type="text/javascript" src="lib/control/iconselect.js"></script>
         
-        <script type="text/javascript" src="lib/iscroll.js"></script>
-        
-        <script>
-            
-        var iconSelect;
-
-        window.onload = function(){
-
-            iconSelect = new IconSelect("my-icon-select", 
-                {'selectedIconWidth':48,
-                'selectedIconHeight':48,
-                'selectedBoxPadding':5,
-                'iconsWidth':48,
-                'iconsHeight':48,
-                'boxIconSpace':3,
-                'vectoralIconNumber':3,
-                'horizontalIconNumber':1});
-
-            var icons = [];
-            icons.push({'iconFilePath':'images/icons/selectgender.png', 'iconValue':'1'});
-            icons.push({'iconFilePath':'images/icons/male.png', 'iconValue':'2'});
-            icons.push({'iconFilePath':'images/icons/female.jpg', 'iconValue':'3'});
-
-            iconSelect.refresh(icons);
-
-        };
-            
-        </script>
             
 </head>
 
@@ -325,61 +295,38 @@
     </header>
     <!-- header-end -->
 
-    <!-- personal-info-area-start -->
-
+     <!-- payment-info-area-start -->
     <div class="payment-info-area">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                
                     <div class="payment-info">
-                        <h2 class="fp-title">PERSONAL INFO</h2>
-                        
-       
-                
-        
-                        
+                        <h2 class="fp-title">PAYMENT INFO</h2>
                         <div class="row">
-                        
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="payment-info-content">
                                     <div class="pic-package-name">
-                                                                      
-                                    <label>My Exercise Plan</label>
+                                        <label>Package Name</label>
                                         <select>
-                                            <option value="">Select Plan</option>
-                                            <option value="">Lean Mode</option>
-                                            <option value="">Healthy Mode</option>
-                                            <option value="">Beast Mode</option>
-                                        </select>
-                                        </div>
-                                    <div class="pic-package-name">
-                                        <label>My Body Type</label>
-                                        <select>
-                                            <option value="">Select Type</option>
-                                            <option value="">Thin</option>
-                                            <option value="">Average</option>
-                                            <option value="">Strong</option>
+                                            <option value="">Select Package</option>
+                                            <option value="">Package 1</option>
+                                            <option value="">Package 2</option>
+                                            <option value="">Package 3</option>
                                         </select>
                                     </div>
-                                    
                                     <div class="pic-amount">
-                                    
-                                        <label>Weight</label>
-                                        <input type="text"  placeholder="lbs">
-                                        <label>Height</label>
-                                        <input type="text" placeholder="inches">
-                                        <label>BMI</label>
-                                        <input type="text" placeholder="%">
+                                        <label>Amount</label>
+                                        <input type="text" placeholder="USD">
                                     </div>
-                                    <div class="pic-amount">
-                                    <label>Select Gender</label>
-                                    <div style="position:relative; left:190px; top:-40px;" id="my-icon-select">Select Gender</div>
+                                    <div class="pic-have-coupon">
+                                        <a class="hover-bs" href="#">HAVE A COUPON?</a>
                                     </div>
-                                    
-                                    
+                                    <div class="pic-agreement">
+                                        <input type="checkbox">
+                                        <label>I have read & accept the Terms & Conditions</label>
+                                    </div>
                                     <div class="pic-submit">
-                                        <input onclick="window.location.href='profileinformation2.html'" class="hover-bs" type="submit" value="NEXT">
+                                        <input class="hover-bs" type="submit" value="SUBMIT">
                                     </div>
                                 </div>
                             </div>
@@ -389,11 +336,7 @@
             </div>
         </div>
     </div>
-    
-    
-    
-    <!-- personal-info-area-end -->
-  
+    <!-- payment-info-area-end -->
     <!--subscribe section start-->
     <div class="subscribe-section">
         <div class="container">
