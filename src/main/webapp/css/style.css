@@ -990,6 +990,11 @@ header {}
     text-align: center;
 }
 
+.myplan-content {
+    padding-top: 88px;
+    text-align: center;
+}
+
 .hc-header {
     color: #fff;
     font-weight: 400;
@@ -7433,3 +7438,5 @@ ul.days li.nm {
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
 }
+
+
