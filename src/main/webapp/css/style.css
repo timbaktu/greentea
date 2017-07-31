@@ -2580,7 +2580,7 @@ img.gmap {
     position: relative;
 }
 
-.location::before {
+.location::before1 {
     position: absolute;
     height: 360px;
     width: 360px;
@@ -2594,7 +2594,7 @@ img.gmap {
     z-index: -1;
 }
 
-.location::after {
+.location::after1 {
     position: absolute;
     height: 228px;
     width: 228px;
