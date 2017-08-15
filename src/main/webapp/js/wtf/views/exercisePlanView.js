@@ -16,7 +16,7 @@
 
 	var HelloList = Backbone.Collection.extend({
 		model : Hello,
-		url : 'http://localhost:8080/GreenTea/exerciseplan/'
+		url : 'exerciseplan/'
 	});
 	
 
@@ -25,7 +25,6 @@
 		el : '#HelloList',
 		
 		initialize : function() {
-			alert('initialize');
 			var self = this;
 			this.collection = new HelloList();
 		    this.collection.fetch().done(function(){
@@ -34,7 +33,6 @@
 		},
 		
 		render:function(){
-			alert('render');
 			debugger;
 			var id = "ep_";
 			var count = 1;
