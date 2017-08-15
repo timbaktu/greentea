@@ -49,4 +49,5 @@
 
 	new HelloListView();
 
+
 })(jQuery);
