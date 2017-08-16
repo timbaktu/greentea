@@ -34,6 +34,11 @@ public class ExercisePlan {
 	@Size(min=3, max=50)
 	@Column(name = "Plan_Description", nullable = false)
 	private String description;
+
+	@NotNull
+	@Size(min=3, max=50)
+	@Column(name = "img_name", nullable = true)
+	private String img_name;
 	
 	@NotNull
 	@Digits(integer=8, fraction=2)
@@ -57,6 +62,14 @@ public class ExercisePlan {
 		this.name = name;
 	}
 
+	public String getimg_name() {
+		return img_name;
+	}
+
+	public void setimg_name(String img_name) {
+		this.img_name = img_name;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -76,7 +89,7 @@ public class ExercisePlan {
 
 	@Override
 	public String toString() {
-		return "ExercisePlan [id=" + id + ", name=" + name + ", description="
+		return "ExercisePlan [id=" + id + ", img_name=" + img_name + ", name=" + name + ", description="
 				+ description + ", no_of_days=" + no_of_days + "]";
 	}
 	
