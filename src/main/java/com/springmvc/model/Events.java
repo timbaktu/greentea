@@ -46,6 +46,28 @@ public class Events {
 	private String url;
 	
 	@NotNull
+	@Size(min=3, max=50)
+	@Column(name = "buy_url", nullable = false)
+	private String buyurl;
+
+	@NotNull
+	@Size(min=3, max=50)
+	@Column(name = "event_date", nullable = false)
+	private String event_date;
+	
+	
+	@NotNull
+	@Size(min=3, max=50)
+	@Column(name = "event_time", nullable = false)
+	private String event_time;
+	
+	
+	@NotNull
+	@Size(min=3, max=50)
+	@Column(name = "img_name", nullable = true)
+	private String img_name;
+	
+	@NotNull
 	@Digits(integer=8, fraction=2)
 	@Column(name = "event_cost", nullable = false)
 	private int cost;
@@ -59,6 +81,7 @@ public class Events {
 		this.id = id;
 	}
 
+
 	public String getName() {
 		return name;
 	}
@@ -66,7 +89,7 @@ public class Events {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public String getDescription() {
 		return description;
 	}
@@ -75,6 +98,38 @@ public class Events {
 		this.description = description;
 	}
 
+	public void setevent_date(String event_date) {
+		this.event_date = event_date;
+	}
+
+	public String getevent_date() {
+		return event_date;
+	}
+
+	public void setevent_time(String event_time) {
+		this.event_time = event_time;
+	}
+
+	public String getevent_time() {
+		return event_time;
+	}
+
+	public String getbuyurl() {
+		return buyurl;
+	}
+
+	public void setbuyurl(String buyurl) {
+		this.buyurl = buyurl;
+	}
+	
+	public String getimg_name() {
+		return img_name;
+	}
+
+	public void setimg_name(String img_name) {
+		this.img_name = img_name;
+	}
+		
 	public String geturl() {
 		return url;
 	}
@@ -101,7 +156,7 @@ public class Events {
 
 	@Override
 	public String toString() {
-		return "ExercisePlan [id=" + id + ", name=" + name + ", url=" + url + ", address=" + address + ", description="
+		return "ExercisePlan [id=" + id + ", img_name=" + img_name + ", name=" + name + ", event_time=" + event_time + ", event_date=" + event_date + ", buyurl=" + buyurl + ", url=" + url + ", address=" + address + ", description="
 				+ description + ", cost=" + cost + "]";
 	}
 	
