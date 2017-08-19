@@ -41,7 +41,7 @@
                             <div class="event-item">
                                 <div class="col-md-3">
                                     <div class="item-img">
-                                        <img src="img/event/event1.jpg" alt="event thumbnail" />
+                                        <img src="{{attributes.img_name}}" alt="event thumbnail" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -55,8 +55,8 @@
                                     <div class="quick-buy row">
                                         <h1>${{attributes.cost}}.00</h1>
                                         <div class="buy-ticket">
-                                            <a href="https://baa.tfaforms.net/forms/view/7/?tfa_dbWorkflowId=2&tfa_dbWorkflowStep=0&tfa_dbWorkflowControl=35ca5fe0b8ee791b2b9e0de70e894ed4&sfid=&rid=" target="_blank" class="buy">QUICK BUY</a>
-                                            <a href="http://www.rundanafarber.org/faf/home/ccp.asp?ievent=1159669&ccp=112822&track=RPTPW051917&msource=RPTPW051917" target="_blank">View more</a>
+                                            <a href="{{attributes.buyurl}}" target="_blank" class="buy">QUICK BUY</a>
+                                            <a href="{{attributes.url}}" target="_blank">View more</a>
                                         </div>
                                     </div>
                                 </div>

@@ -6,3 +6,10 @@ UPDATE `wethinkfitness`.`wf_events` SET `buy_url`='https://fitranx.com/myfitranx
 UPDATE `wethinkfitness`.`wf_events` SET `buy_url`='http://www.rundanafarber.org/faf/home/ccp.asp?ievent=1159669&ccp=112822&track=RPTPW051917&msource=RPTPW051917', `img_name`='/img/event/event1.jpg' WHERE `id`='2';
 UPDATE `wethinkfitness`.`wf_events` SET `buy_url`='https://www.spartan.com/en/race/detail/3350/overview', `img_name`='/img/event/event2.jpg' WHERE `id`='1';
 
+commit;
+
+UPDATE `wethinkfitness`.`wf_events` SET `img_name`='img/event/event2.jpg' WHERE `id`='1';
+UPDATE `wethinkfitness`.`wf_events` SET `img_name`='img/event/event1.jpg' WHERE `id`='2';
+UPDATE `wethinkfitness`.`wf_events` SET `img_name`='img/event/event3.png' WHERE `id`='3';
+
+commit;
