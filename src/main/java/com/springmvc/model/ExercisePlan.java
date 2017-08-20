@@ -29,7 +29,7 @@ public class ExercisePlan {
 	@Size(min=3, max=50)
 	@Column(name = "Plan_Name", nullable = false)
 	private String name;
-
+	
 	@NotNull
 	@Size(min=3, max=50)
 	@Column(name = "Plan_Description", nullable = false)
@@ -57,11 +57,11 @@ public class ExercisePlan {
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public String getimg_name() {
 		return img_name;
 	}
