@@ -36,32 +36,7 @@
         
         <script type="text/javascript" src="lib/iscroll.js"></script>
         
-        <script>
-            
-        var iconSelect;
 
-        window.onload = function(){
-
-            iconSelect = new IconSelect("my-icon-select", 
-                {'selectedIconWidth':48,
-                'selectedIconHeight':48,
-                'selectedBoxPadding':5,
-                'iconsWidth':48,
-                'iconsHeight':48,
-                'boxIconSpace':3,
-                'vectoralIconNumber':3,
-                'horizontalIconNumber':1});
-
-            var icons = [];
-            icons.push({'iconFilePath':'images/icons/selectgender.png', 'iconValue':'1'});
-            icons.push({'iconFilePath':'images/icons/male.png', 'iconValue':'2'});
-            icons.push({'iconFilePath':'images/icons/female.jpg', 'iconValue':'3'});
-
-            iconSelect.refresh(icons);
-
-        };
-            
-        </script>
             
 </head>
 
@@ -341,48 +316,30 @@
                     <div class="payment-info">
                         <h2 class="fp-title">PERSONAL INFO</h2>
                         
-       
-                
-        
-                        
-                        <div class="row">
+                               <div class="row">
                         
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="payment-info-content">
-                                    <div class="pic-package-name">
-                                                                      
-                                    <label>My Exercise Plan</label>
-                                        <select>
-                                            <option value="">Select Plan</option>
-                                            <option value="">Build Muscle</option>
-                                            <option value="">Lose Fat</option>
-                                            <option value="">Transform</option>
-                                        </select>
-                                        </div>
-                                    <div class="pic-package-name">
-                                        <label>My Body Type</label>
-                                        <select>
-                                            <option value="">Select Type</option>
-                                            <option value="">Thin</option>
-                                            <option value="">Average</option>
-                                            <option value="">Strong</option>
-                                        </select>
-                                    </div>
-                                    
                                     <div class="pic-amount">
-                                    
+                                        <label>First Name</label>
+                                        <input type="text" name="my_name"  placeholder="first" required>
+                                        <label>Middle Name</label>
+                                        <input type="text"  placeholder="middle">
+                                        <label>Last Name</label>
+                                        <input type="text"  placeholder="last">
+                                        <label>Address Line 1</label>
+                                        <input type="text"  placeholder="address 1">
+                                        <label>Address Line 2</label>
+                                        <input type="text"  placeholder="address 2">
+                                        <label>Email Address</label>
+                                        <input type="text"  placeholder="email id">
                                         <label>Weight</label>
                                         <input type="text"  placeholder="lbs">
                                         <label>Height</label>
                                         <input type="text" placeholder="inches">
                                         <label>BMI</label>
-                                        <input type="text" placeholder="%">
+                                        <input type="text" placeholder="%">    
                                     </div>
-                                    <div class="pic-amount">
-                                    <label>Select Gender</label>
-                                    <div style="position:relative; left:190px; top:-40px;" id="my-icon-select">Select Gender</div>
-                                    </div>
-                                    
                                     
                                     <div class="pic-submit">
                                         <input onclick="window.location.href='profileinformation2.html'" class="hover-bs" type="submit" value="NEXT">
