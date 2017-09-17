@@ -4737,7 +4737,7 @@ select {
     padding-left: 10%;
     background: #ff1b1b;
     height: 131px;
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     bottom: 0;
     width: 100%;
