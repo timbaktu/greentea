@@ -1,9 +1,6 @@
 package com.springmvc.model;
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,9 +25,6 @@ public class ExercisePlanDetail implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = 4020362183194205605L;
 
-	@Column
-	@ElementCollection(targetClass=ExerciseType.class)
-	private Set<ExerciseType> ExerciseType = new HashSet<ExerciseType>(0);
 	
 	public ExercisePlanDetail() {
 		// TODO Auto-generated constructor stub
