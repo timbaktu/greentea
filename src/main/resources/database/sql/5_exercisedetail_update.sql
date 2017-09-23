@@ -1,14 +1,12 @@
 
-UPDATE `wethinkfitness`.`wf_all_exercises` SET `img_name`='img/video/1.png', `how_to`='https://www.bodybuilding.com/fun/chest-workouts-for-men-the-6-best-routines-for-a-bigger-chest.html', `video_link`='https://www.youtube.com/watch?v=SHsUIZiNdeY' WHERE `id`='1';
-
-UPDATE `wethinkfitness`.`wf_all_exercises` SET `img_name`='img/video/2.png', `how_to`='https://www.youtube.com/watch?v=_YcANO5d0nA', `video_link`='https://www.bodybuilding.com/fun/chest-workouts-for-men-the-6-best-routines-for-a-bigger-chest.html' WHERE `id`='2';
-
-
-
 ALTER TABLE `wethinkfitness`.`wf_all_exercises` 
 ADD COLUMN `img_name` VARCHAR(100) NULL DEFAULT NULL AFTER `updateddate`,
 ADD COLUMN `how_to` VARCHAR(100) NULL DEFAULT NULL AFTER `img_name`,
 ADD COLUMN `video_link` VARCHAR(100) NULL DEFAULT NULL AFTER `how_to`;
+
+UPDATE `wethinkfitness`.`wf_all_exercises` SET `img_name`='img/video/1.png', `how_to`='https://www.bodybuilding.com/fun/chest-workouts-for-men-the-6-best-routines-for-a-bigger-chest.html', `video_link`='https://www.youtube.com/watch?v=SHsUIZiNdeY' WHERE `id`='1';
+
+UPDATE `wethinkfitness`.`wf_all_exercises` SET `img_name`='img/video/2.png', `how_to`='https://www.youtube.com/watch?v=_YcANO5d0nA', `video_link`='https://www.bodybuilding.com/fun/chest-workouts-for-men-the-6-best-routines-for-a-bigger-chest.html' WHERE `id`='2';
 
 
 
