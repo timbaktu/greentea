@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="wf_plan_detail") 
+@Table(name="wf_exerciseplanschedule") 
 @SecondaryTables({
       @SecondaryTable(name="wf_exercise_type", pkJoinColumns={@PrimaryKeyJoinColumn(name = "id")})
       })
@@ -47,12 +47,12 @@ public class PlanDetail implements java.io.Serializable{
 	
 	@NotNull
 	@Size(min=3, max=50)
-	@Column(name = "frequency", nullable = false)
-	private String frequency;
+	@Column(name = "day", nullable = false)
+	private String day;
 
 	@NotNull
 	@Digits(integer=8, fraction=2)
-	@Column(name = "plan_id", nullable = false)
+	@Column(name = "planid", nullable = false)
 	private int plan_id;
 	
 	@NotNull
@@ -62,7 +62,7 @@ public class PlanDetail implements java.io.Serializable{
 	
 	@NotNull
 	@Digits(integer=8, fraction=2)
-	@Column(name = "number_of_exercises", nullable = false)
+	@Column(name = "no_of_exercises", nullable = false)
 	private int no_of_exercise;
 	
 	
@@ -91,12 +91,12 @@ public class PlanDetail implements java.io.Serializable{
 	}
 
 
-	public String getfrequency() {
-		return frequency;
+	public String getday() {
+		return day;
 	}
 
-	public void setfrequency(String frequency) {
-		this.frequency = frequency;
+	public void setday(String day) {
+		this.day = day;
 	}
 
 	public int getno_of_reps() {
@@ -128,7 +128,7 @@ public class PlanDetail implements java.io.Serializable{
 	@Override
 	public String toString() {
 		return "PlanDetail [id=" + id + ",plan_id=" + plan_id + ", name=" + name + ", description="
-		+ description + ", frequency=" + frequency + ", no_of_reps=" + no_of_reps + ", no_of_exercise=" + no_of_exercise + "]";
+		+ description + ", day=" + day + ", no_of_reps=" + no_of_reps + ", no_of_exercise=" + no_of_exercise + "]";
 	}
 	
 	
