@@ -37,7 +37,12 @@
 
      <script id="plandetail_template" type="text/x-handlebars-template">
   {{#each models}}
-        <div class="plan-item-area fst">
+		{{#if @first}}
+			<div class="plan-item-area fst">
+		{{else}}
+			<div class="plan-item-area">
+		{{/if}}
+        
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="row">
                     <p class="title scnd">DAY {{attributes.day}}</p>
@@ -401,7 +406,7 @@
 </div>
 </div>
 <div class="work-plan-sec">
-    <div class="work-plan" >
+    <div class="work-plan" id="plandetail">
         
        <!--  
         <div class="plan-item-area fst">
