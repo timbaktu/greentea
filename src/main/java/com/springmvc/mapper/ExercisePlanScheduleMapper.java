@@ -22,6 +22,7 @@ public class ExercisePlanScheduleMapper {
 		bean.setUrl("http://localhost:8080/GreenTea/exercise-plan-details.html?id=" + schedule.getExercise_type_id());
 		bean.setStartDate(plandate);
 		//bean.setEndDate("2017-09-10");
+		// Setting as true to remove 12a text
 		bean.setAllDay(true);
 		bean.setClassName(schedule.getclassName());
 		bean.setExercise_type_id(schedule.getExercise_type_id());
