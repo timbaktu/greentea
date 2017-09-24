@@ -16,7 +16,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.springmvc.model.ExercisePlan;
+import com.springmvc.model.PlanDetail;
 import com.springmvc.service.ExercisePlanService;
+import com.springmvc.service.PlanDetailService;
 
 @RestController
 @EnableWebMvc
@@ -24,6 +26,9 @@ public class ExercisePlanController {
 	
 	@Autowired
 	ExercisePlanService service;
+	
+    @Autowired
+    PlanDetailService planservice;
 
     //-------------------Retrieve All Users--------------------------------------------------------
     @RequestMapping(value = "/exerciseplan/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,6 +39,15 @@ public class ExercisePlanController {
         }
         return new ResponseEntity<List<ExercisePlan>>(exerciseplan, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/exerciseplan/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<PlanDetail>>  listPlanDetail(@PathVariable("id") int id) {
+      List<PlanDetail> plandetail = planservice.findPlanDetail(id);
+      if(plandetail.isEmpty()){
+          return new ResponseEntity<List<PlanDetail>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+      }
+      return new ResponseEntity<List<PlanDetail>>(plandetail, HttpStatus.OK);
+  }
 
 
 }
