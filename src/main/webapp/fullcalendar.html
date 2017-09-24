@@ -21,7 +21,7 @@
 		className: default(transparent), important(red), chill(pink), success(green), info(blue)
 		
 		*/		
-		
+		debugger;
 		  
 		/* initialize the external events
 		-----------------------------------------------------------------*/
@@ -76,6 +76,8 @@
 			allDaySlot: false,
 			selectHelper: true,
 			select: function(start, end, allDay) {
+				
+				debugger;
 				var title = prompt('Event Title:');
 				if (title) {
 					calendar.fullCalendar('renderEvent',

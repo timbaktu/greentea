@@ -22,7 +22,7 @@
 
 	var HelloListView = Backbone.View.extend({
 		
-		el : '#exerciselisting',
+		el : '#fc-day',
 		
 		initialize : function() {
 			var self = this;
@@ -37,7 +37,7 @@
 			var template = Handlebars.compile(source);
 			var html = template(this.collection);
 			
-			$('#exerciselisting').html(html);
+			$('#fc-day').html(html);
 		},
 	});
 

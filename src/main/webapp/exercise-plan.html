@@ -29,22 +29,253 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
             <![endif]-->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>            
-</head>
+            
+            <link href='fullcalendar.css' rel='stylesheet' />
+<link href='fullcalendar.print.css' rel='stylesheet' media='print' />
 
-<body data-spy="scroll" data-target="#scroll-menu" data-offset="100">
+	<script
+	    src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+	    </script>
+
+ <script src='fullcalendar.js'></script>
+<!--<script type="text/javascript" src="js/wtf/views/schedule.js"></script>-->  
+
+<!-- 
+     <script id="schedule_template" type="text/x-handlebars-template">
+  {{#each models}}
+                            <div class="event-item">
+                                <div class="col-md-3">
+                                    <div class="item-img">
+                                        <img src="{{attributes.img_name}}" alt="event thumbnail" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <h1>{{attributes.name}}</h1>
+                                        <p class="event-date">October 8 2018 08:00 - 18:00 | 1 day</p>
+                                        <p class="desc">{{attributes.description}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="quick-buy row">
+                                        <h1>${{attributes.cost}}.00</h1>
+                                        <div class="buy-ticket">
+                                            <a href="{{attributes.buyurl}}" target="_blank" class="buy">QUICK BUY</a>
+                                            <a href="{{attributes.url}}" target="_blank">View more</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+  {{/each}}    
+
+	 </script> 
+ -->
+
 
 	<script type="text/javascript">
 	
 		$(document).ready(function(){
+			
+			
+		    var date = new Date();
+			var d = date.getDate();
+			var m = date.getMonth();
+			var y = date.getFullYear();
+			
+			
+			/*  className colors
+			
+			className: default(transparent), important(red), chill(pink), success(green), info(blue)
+			
+			*/		
+			debugger;
+			  
+			/* initialize the external events
+			-----------------------------------------------------------------*/
+		
+			$('#external-events div.external-event').each(function() {
+			
+				// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+				// it doesn't need to have a start or end
+				var eventObject = {
+					title: $.trim($(this).text()) // use the element's text as the event title
+				};
+				
+				// store the Event Object in the DOM element so we can get to it later
+				$(this).data('eventObject', eventObject);
+				
+				// make the event draggable using jQuery UI
+				$(this).draggable({
+					zIndex: 999,
+					revert: true,      // will cause the event to go back to its
+					revertDuration: 0  //  original position after the drag
+				});
+				
+			});
+		
+		
+			/* initialize the calendar
+			-----------------------------------------------------------------*/
+			
+			var calendar =  $('#calendar').fullCalendar({
+				header: {
+					left: 'title',
+					center: 'agendaDay,agendaWeek,month',
+					right: 'prev,next today'
+				},
+				editable: true,
+				firstDay: 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
+				selectable: true,
+				defaultView: 'month',
+				
+				axisFormat: 'h:mm',
+				columnFormat: {
+	                month: 'ddd',    // Mon
+	                week: 'ddd d', // Mon 7
+	                day: 'dddd M/d',  // Monday 9/7
+	                agendaDay: 'dddd d'
+	            },
+	            titleFormat: {
+	                month: 'MMMM yyyy', // September 2009
+	                week: "MMMM yyyy", // September 2009
+	                day: 'MMMM yyyy'                  // Tuesday, Sep 8, 2009
+	            },
+				allDaySlot: false,
+				selectHelper: true,
+				select: function(start, end, allDay) {
+					debugger;
+					
+					var title = prompt('Event Title:');
+					if (title) {
+						calendar.fullCalendar('renderEvent',
+							{
+								title: title,
+								start: start,
+								end: end,
+								allDay: allDay
+							},
+							true // make the event "stick"
+						);
+					}
+					calendar.fullCalendar('unselect');
+				},
+				droppable: true, // this allows things to be dropped onto the calendar !!!
+				drop: function(date, allDay) { // this function is called when something is dropped
+				
+					// retrieve the dropped element's stored Event Object
+					var originalEventObject = $(this).data('eventObject');
+					
+					// we need to copy it, so that multiple events don't have a reference to the same object
+					var copiedEventObject = $.extend({}, originalEventObject);
+					
+					// assign it the date that was reported
+					copiedEventObject.start = date;
+					copiedEventObject.allDay = allDay;
+					
+					// render the event on the calendar
+					// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+					$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+					
+					// is the "remove after drop" checkbox checked?
+					if ($('#drop-remove').is(':checked')) {
+						// if so, remove the element from the "Draggable Events" list
+						$(this).remove();
+					}
+					
+				},
+
+				events: '/GreenTea/exerciseplanschedule/1'
+
+				
+			});
+			
+			
+			
+			
+			<!--
+			
 			$(".days").click(function() {
 
 			    window.location.href= 'exercise-plan-details.html';
 
 			  });
+			
+			-->
+			
+			//new ScheduleListView();
 		});
 	
 	</script>
+
+
+	<style>
+	
+		body {
+			margin-top: 40px;
+			text-align: center;
+			font-size: 14px;
+			font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
+			background-color: #DDDDDD;
+			}
+			
+		#wrap {
+			width: 1100px;
+			margin: 0 auto;
+			}
+			
+		#external-events {
+			float: left;
+			width: 150px;
+			padding: 0 10px;
+			text-align: left;
+			}
+			
+		#external-events h4 {
+			font-size: 16px;
+			margin-top: 0;
+			padding-top: 1em;
+			}
+			
+		.external-event { /* try to mimick the look of a real event */
+			margin: 10px 0;
+			padding: 2px 4px;
+			background: #3366CC;
+			color: #fff;
+			font-size: .85em;
+			cursor: pointer;
+			}
+			
+		#external-events p {
+			margin: 1.5em 0;
+			font-size: 11px;
+			color: #666;
+			}
+			
+		#external-events p input {
+			margin: 0;
+			vertical-align: middle;
+			}
+	
+		#calendar {
+	/* 		float: right; */
+	        margin: 0 auto;
+			width: 900px;
+			background-color: #FFFFFF;
+			  border-radius: 6px;
+	        box-shadow: 0 1px 2px #C3C3C3;
+			}
+	
+	</style>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#scroll-menu" data-offset="100">
+
+
+
+
+
 
     <!-- preloader -->
     <div id="preloader"></div>
@@ -344,6 +575,11 @@
                 <div class="col-md-10 col-sm-10 col-xs-8 xd-12">
                     <div class="row">
                         <div class="exercise-plan-right">
+                        <div id='wrap'>
+							<div id='calendar'></div>
+							<div style='clear:both'></div>
+						</div>
+                        <!-- 
                             <div class="exercise-plan-content">
                                 <div class="epc-head">
                                     <div class="epc-tab-area">
@@ -531,7 +767,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="exercise-bottom-content">
                                 <h5>You Have Successfully Done Your Tasks</h5>
                                 <h2>KEEP <span class="bold">IT UP</span></h2>
@@ -667,7 +903,7 @@
         </div>
     </footer>
     <!-- Scripts -->
-    <script src="js/jquery-3.2.0.min.js"></script>
+
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/countdown.js"></script>
