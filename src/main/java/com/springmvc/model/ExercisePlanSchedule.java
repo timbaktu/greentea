@@ -43,14 +43,30 @@ public class ExercisePlanSchedule implements java.io.Serializable{
 
 	@NotNull
 	@Size(min=1, max=50)
+	@Column(name = "exercise_type_id", nullable = false)
+	private int exercise_type_id;
+
+	@NotNull
+	@Size(min=1, max=50)
 	@Column(name = "planid", nullable = false)
 	private int planid;
+	
+	@NotNull
+	@Size(min=1, max=50)
+	@Column(name = "day", nullable = false)
+	private int day;
 	
 	@NotNull
 	@Size(min=3, max=50)
 	@Column(table = "wf_exercise_type", name = "exercise_type_name", nullable = false)
 	private String name;
 
+	
+	@NotNull
+	@Size(min=3, max=50)
+	@Column(table = "wf_exercise_type", name = "classname", nullable = false)
+	private String classname;
+	
 	@NotNull
 	@Size(min=3, max=50)
 	@Column(table = "wf_exercise_type", name = "description", nullable = false)
@@ -68,7 +84,25 @@ public class ExercisePlanSchedule implements java.io.Serializable{
 	public int getplanid() {
 		return planid;
 	}
+	
+	
+	
+	public int getExercise_type_id() {
+		return exercise_type_id;
+	}
 
+	public void setExercise_type_id(int exercise_type_id) {
+		this.exercise_type_id = exercise_type_id;
+	}
+
+	public void setday(int day) {
+		this.day = day;
+	}
+
+	public int getday() {
+		return day;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -80,7 +114,17 @@ public class ExercisePlanSchedule implements java.io.Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+
 	}
+	
+	
+	public String getclassName() {
+	return classname;
+}
+
+public void setclassName(String classname) {
+	this.classname = classname;
+}
 	
 	public void setDescription(String description) {
 		this.description = description;
@@ -94,7 +138,7 @@ public class ExercisePlanSchedule implements java.io.Serializable{
 
 	@Override
 	public String toString() {
-		return "ExercisePlanSchedule [planid=" + planid + ",id=" + id + ", name=" + name + ", description="
+		return "ExercisePlanSchedule [planid=" + planid + ",exercise_type_id=" + exercise_type_id + ",id=" + id + ",day=" + day + ", name=" + name + ", classname=" + classname + ", description="
 				+ description + "]";
 	}
 	
