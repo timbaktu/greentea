@@ -10,9 +10,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="wf_exercise_type") 
+@Table(name="wf_all_exercises") 
 
-public class ExerciseType  implements java.io.Serializable{
+public class Exercises  implements java.io.Serializable{
 
 	
 	/**
@@ -34,19 +34,28 @@ public class ExerciseType  implements java.io.Serializable{
 	
 	@NotNull
 	@Size(min=3, max=50)
-	@Column(name = "description", nullable = false)
+	@Column(name = "exercise_description", nullable = false)
 	private String description;
 	
-
 	@NotNull
 	@Size(min=3, max=50)
-	@Column(name = "exercise_type_name", nullable = false)
-	private String name;
+	@Column(name = "img_name", nullable = false)
+	private String img_name;
 	
 	@NotNull
 	@Size(min=3, max=50)
-	@Column(name = "classname", nullable = false)
-	private String classname;
+	@Column(name = "how_to", nullable = false)
+	private String how_to;
+	
+	@NotNull
+	@Size(min=3, max=50)
+	@Column(name = "video_link", nullable = false)
+	private String video_link;
+	
+	@NotNull
+	@Size(min=3, max=50)
+	@Column(name = "exercise_name", nullable = false)
+	private String name;
 	
 	
 	public String getName() {
@@ -65,13 +74,30 @@ public class ExerciseType  implements java.io.Serializable{
 		this.description = description;
 	}
 
-	public String getClassname() {
-		return classname;
+	public String getImg_name() {
+		return img_name;
 	}
 
-	public void setClassname(String classname) {
-		this.classname = classname;
+	public void setImg_name(String img_name) {
+		this.img_name = img_name;
 	}
+
+	public String getHow_to() {
+		return how_to;
+	}
+
+	public void setHow_to(String how_to) {
+		this.how_to = how_to;
+	}
+
+	public String getVideo_link() {
+		return video_link;
+	}
+
+	public void setVideo_link(String video_link) {
+		this.video_link = video_link;
+	}
+	
 	
 	
 	

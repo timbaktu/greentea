@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -13,11 +16,13 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.ForeignKey;
+
 @Entity
 @Table(name="wf_exerciseplanschedule") 
-@SecondaryTables({
-      @SecondaryTable(name="wf_exercise_type", pkJoinColumns={@PrimaryKeyJoinColumn(name = "id")})
-      })
+//@SecondaryTables({
+//      @SecondaryTable(name="wf_exercise_type", pkJoinColumns={@PrimaryKeyJoinColumn(name = "id") })
+//      })
 
 public class PlanDetail implements java.io.Serializable{
 	/**
@@ -30,19 +35,29 @@ public class PlanDetail implements java.io.Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+//	@OneToOne
+//	  @JoinColumns( {
+//	      @JoinColumn(name = "exercise_type_id", referencedColumnName = "ID", table = "wf_exercise_type") })
+//	@SuppressWarnings("deprecation")
+	@OneToOne
+	@ForeignKey(name="exercise_type_id")
+	private ExerciseType exercise_type;
+
+	@NotNull
+//	@Size(min=3, max=50)
+//	@Column(table = "wf_exercise_type", name = "exercise_type_name", nullable = false)
+//	private String name;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@NotNull
-	@Size(min=3, max=50)
-	@Column(table = "wf_exercise_type", name = "exercise_type_name", nullable = false)
-	private String name;
+	
 
-	@NotNull
-	@Size(min=3, max=200)
-	@Column(table = "wf_exercise_type", name = "description", nullable = false)
-	private String description;
+//	@NotNull
+//	@Size(min=3, max=200)
+//	@Column(table = "wf_exercise_type", name = "description", nullable = false)
+//	private String description;
 
 	
 	@NotNull
@@ -83,12 +98,12 @@ public class PlanDetail implements java.io.Serializable{
 	}
 	
 	public String getName() {
-		return name;
+		return exercise_type.getName();
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+//	public void setName(String name) {
+//		this.name = name;
+//	}
 
 
 	public String getday() {
@@ -116,19 +131,19 @@ public class PlanDetail implements java.io.Serializable{
 	}
 
 	public String getDescription() {
-		return description;
+		return exercise_type.getDescription();
 	}
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
+//	
+//	public void setDescription(String description) {
+//		this.description = description;
+//	}
 	
 
 
 	@Override
 	public String toString() {
-		return "PlanDetail [id=" + id + ",plan_id=" + plan_id + ", name=" + name + ", description="
-		+ description + ", day=" + day + ", no_of_reps=" + no_of_reps + ", no_of_exercise=" + no_of_exercise + "]";
+		return "PlanDetail [id=" + id + ",plan_id=" + plan_id + ", name=" + getName() + ", description="
+		+ getDescription() + ", day=" + day + ", no_of_reps=" + no_of_reps + ", no_of_exercise=" + no_of_exercise + "]";
 	}
 	
 	

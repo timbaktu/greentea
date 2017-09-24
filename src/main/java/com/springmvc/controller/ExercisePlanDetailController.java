@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.springmvc.bean.ExercisePlanDetailBean;
+import com.springmvc.bean.PlanDetailBean;
+import com.springmvc.mapper.ExercisePlanDetailMapper;
+import com.springmvc.mapper.PlanDetailMapper;
 import com.springmvc.model.ExercisePlanDetail;
+import com.springmvc.model.PlanDetail;
 import com.springmvc.service.ExercisePlanDetailService;
 
 @RestController
@@ -27,14 +33,21 @@ public class ExercisePlanDetailController {
 
     //-------------------Retrieve All Users--------------------------------------------------------
     @RequestMapping(value = "/exerciseplandetail/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<List<ExercisePlanDetail>> listExercisePlanDetail() {
-      public ResponseEntity<List<ExercisePlanDetail>>  listExercisePlanDetail(@PathVariable("id") int id) {
-        List<ExercisePlanDetail> exerciseplandetail = service.findExerciePlanDetail(id);
-        if(exerciseplandetail.isEmpty()){
-            return new ResponseEntity<List<ExercisePlanDetail>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-        }
-        return new ResponseEntity<List<ExercisePlanDetail>>(exerciseplandetail, HttpStatus.OK);
-    }
+      public ResponseEntity<List<ExercisePlanDetailBean>>  listExercisePlanDetail(@PathVariable("id") int id) {
+    	 List<ExercisePlanDetail> exerciseplandetails = service.findExerciePlanDetail(id);
+         List<ExercisePlanDetailBean> exerciseplandetailsbean  = new ArrayList<ExercisePlanDetailBean>();
+         
+         for(ExercisePlanDetail exerciseplandetail : exerciseplandetails) {
+         	ExercisePlanDetailBean exerciseplandetailbean = new ExercisePlanDetailBean();
+         	ExercisePlanDetailMapper.createExercisePlanDetailBean(exerciseplandetailbean, exerciseplandetail);
+         	exerciseplandetailsbean.add(exerciseplandetailbean);
+         }
+         
+         
+         if(exerciseplandetailsbean.isEmpty()){
+             return new ResponseEntity<List<ExercisePlanDetailBean>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+         }
+         return new ResponseEntity<List<ExercisePlanDetailBean>>(exerciseplandetailsbean, HttpStatus.OK);
 
-
+}
 }

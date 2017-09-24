@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.springmvc.bean.PlanDetailBean;
+import com.springmvc.mapper.PlanDetailMapper;
 import com.springmvc.model.ExercisePlan;
 import com.springmvc.model.PlanDetail;
 import com.springmvc.service.ExercisePlanService;
@@ -40,14 +43,22 @@ public class ExercisePlanController {
         return new ResponseEntity<List<ExercisePlan>>(exerciseplan, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/exerciseplan/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<PlanDetail>>  listPlanDetail(@PathVariable("id") int id) {
-      List<PlanDetail> plandetail = planservice.findPlanDetail(id);
-      if(plandetail.isEmpty()){
-          return new ResponseEntity<List<PlanDetail>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-      }
-      return new ResponseEntity<List<PlanDetail>>(plandetail, HttpStatus.OK);
-  }
-
+    @RequestMapping(value = "/plandetail/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<PlanDetailBean>> listPlanDetail(@PathVariable("id") int id) {
+        List<PlanDetail> plandetails = planservice.findPlanDetail(id);
+        List<PlanDetailBean> plandetailsbean  = new ArrayList<PlanDetailBean>();
+        
+        for(PlanDetail plandetail : plandetails) {
+        	PlanDetailBean plandetailbean = new PlanDetailBean();
+        	PlanDetailMapper.createPlanDetailBean(plandetailbean, plandetail);
+        	plandetailsbean.add(plandetailbean);
+        }
+        
+        
+        if(plandetailsbean.isEmpty()){
+            return new ResponseEntity<List<PlanDetailBean>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<PlanDetailBean>>(plandetailsbean, HttpStatus.OK);
+    }
 
 }

@@ -16,7 +16,7 @@ public class ExercisePlanDetailDaoImpl extends AbstractDao<Integer, ExercisePlan
 
 	@SuppressWarnings("unchecked")
 	public List<ExercisePlanDetail> findExercisePlanDetail(int id) {
-		Criteria criteria = createEntityCriteria().add(Restrictions.eq("id", id));
+		Criteria criteria = createEntityCriteria().add(Restrictions.eq("schedule_id", id));
 		return (List<ExercisePlanDetail>) criteria.list();
 	}
 
