@@ -7,6 +7,8 @@ public class ExercisePlanScheduleBean implements java.io.Serializable{
 
 	private int id;
 	private int planid;
+	private int day;
+	private int exercise_type_id;
 	private String title;
 	private String description;
 	@JsonProperty("start")
@@ -22,9 +24,27 @@ public class ExercisePlanScheduleBean implements java.io.Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
+	
+	public int getExercise_type_id() {
+		return exercise_type_id;
+	}
+	public void setExercise_type_id(int exercise_type_id) {
+		this.exercise_type_id = exercise_type_id;
+	}
+	public int getDay() {
+		return day;
+	}
+	public void setDay(int day) {
+		this.day = day;
+	}
 	public int getPlanid() {
 		return planid;
 	}
+	
+	
+	
 	public void setPlanid(int planid) {
 		this.planid = planid;
 	}
