@@ -23,6 +23,7 @@ public class ExercisePlanScheduleMapper {
 		bean.setStartDate(plandate);
 		//bean.setEndDate("2017-09-10");
 		bean.setClassName(schedule.getclassName());
+		bean.setExercise_type_id(schedule.getExercise_type_id());
 	}
 	
 	public static void createExercisePlanSchedule() {
