@@ -19,7 +19,7 @@ public class ExercisePlanScheduleMapper {
 	    Calendar c = Calendar.getInstance();        
 	    c.add(Calendar.DATE, schedule.getday());  // number of days to add      
 	    String plandate = (String)(formattedDate.format(c.getTime()));
-		bean.setUrl("http://localhost:8080/GreenTea/exercise-plan-details.html?id=" + schedule.getExercise_type_id());
+		bean.setUrl("exercise-plan-details.html?id=" + schedule.getExercise_type_id());
 		bean.setStartDate(plandate);
 		//bean.setEndDate("2017-09-10");
 		// Setting as true to remove 12a text

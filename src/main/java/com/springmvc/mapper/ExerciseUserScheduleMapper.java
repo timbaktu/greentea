@@ -28,7 +28,7 @@ public class ExerciseUserScheduleMapper {
 	    Calendar c = Calendar.getInstance();        
 	    c.add(Calendar.DATE, schedule.getExercise_user_schedule().getday());  // number of days to add      
 	    String plandate = (String)(formattedDate.format(c.getTime()));
-		bean.setUrl("http://localhost:8080/GreenTea/exercise-plan-details.html?id=" + schedule.getExercise_user_schedule().getExercise_type_id());
+		bean.setUrl("exercise-plan-details.html?id=" + schedule.getExercise_user_schedule().getExercise_type_id());
 		bean.setStartDate(plandate);
 		//bean.setEndDate("2017-09-10");
 		bean.setClassName(schedule.getExercise_user_schedule().getclassName());
