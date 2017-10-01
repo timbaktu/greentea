@@ -4802,6 +4802,11 @@ select {
     border-top: 1px solid #d2d2d2;
 }
 
+.plan-item-area.week {
+    border-top: 1px solid #d2d2d2;
+    padding-top: 20px;
+}
+
 .plan-item-area p.scnd {
     font-size: 16px;
     color: #ff1b1b!important;

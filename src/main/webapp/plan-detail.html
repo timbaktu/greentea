@@ -36,9 +36,19 @@
 	<script type="text/javascript" src="js/wtf/views/planDetail.js"></script>  
 
      <script id="plandetail_template" type="text/x-handlebars-template">
-  {{#each models}}
-		{{#if @first}}
-			<div class="plan-item-area fst">
+
+
+{{#each models}}
+		
+		{{#if attributes.week}}
+
+			<p class="title" style="padding-top: 35px; text-decoration: underline;">WEEK {{attributes.week}}</p>
+
+		{{/if}}
+
+
+		{{#if attributes.week}}
+			<div class="plan-item-area week">
 		{{else}}
 			<div class="plan-item-area">
 		{{/if}}

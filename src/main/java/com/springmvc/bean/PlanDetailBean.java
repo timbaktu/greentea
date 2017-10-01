@@ -39,6 +39,17 @@ public class PlanDetailBean implements java.io.Serializable{
 	public void setDay(String day) {
 		this.day = day;
 	}
+	
+	public Integer getWeek() {
+		if (Integer.parseInt(day) % 7 == 1)
+			return (Integer.parseInt(day) / 7) + 1;
+		
+		if (Integer.parseInt(day) == 1)
+			return 1;
+		
+		return null;
+	}
+	
 	public int getPlanid() {
 		return planid;
 	}
