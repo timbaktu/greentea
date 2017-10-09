@@ -35,6 +35,27 @@
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.0/handlebars.js'></script>
 	<script type="text/javascript" src="js/wtf/views/exercisePlanDetail.js"></script>  
 
+
+<div class="bs-example">
+    <!-- Button HTML (to Trigger Modal) -->
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">YouTube Video</h4>
+                </div>
+                <div class="modal-body">
+                    <iframe id="cartoonVideo" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+
+
      <script id="exerciseplandetail_template" type="text/x-handlebars-template">
   {{#each models}}
 
@@ -54,7 +75,7 @@
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="p-img-area">
                             <img src="{{attributes.img_name}}" alt="thumbnail" />
-                            <a class="video" href="{{attributes.video_link}}"><i class="fa fa-play"></i></a>
+                            <a id="modal{{attributes.id}}" data-name="{{attributes.video_link}}" href="#myModal" class="fa fa-play" data-toggle="modal"></a>
                 </div>
             </div>
                         
@@ -415,6 +436,14 @@
         <div id="exerciseplandetail">
         
         </div>
+        
+		<div class="currentmodal">
+		    <!-- Button HTML (to Trigger Modal) -->
+		    
+		    <!-- Modal HTML -->
+		
+		</div>        
+        
       <!--
         <div class="plan-item-area fst">
             <div class="col-md-3 col-sm-3 col-xs-6">
