@@ -16,6 +16,13 @@
 		
 		el : '#exerciseplandetail',
 		
+		events: function() {
+		      $('a').click(function (e) {
+		    	  e.preventDefault();
+		          SearchApp.navigate(e.target.pathname, true);
+		        });
+		},
+			  
 		initialize : function() {
 			var self = this;
 			this.collection = new ExercisePlanDetailList();
@@ -30,10 +37,47 @@
 			var html = template(this.collection);
 			
 			$('#exerciseplandetail').html(html);
+			
+			
+		    $(".fa-play").on('click', function(event){
+		        var url = $(event.target).data('name');
+		        
+		        url = url.replace("watch?v=", "embed/");
+		        $("#cartoonVideo").attr('src', url);
+		        
+		        $("#myModal").on('hide.bs.modal', function(){
+		            $("#cartoonVideo").attr('src', '');
+		        });
+		        
+		        /* Assign the initially stored url back to the iframe src
+		        attribute when modal is displayed again */
+		        $("#myModal").on('show.bs.modal', function(){
+		            $("#cartoonVideo").attr('src', url);
+		        });
+		        
+		    });
+			
+		    $("#modal1").on('click', function(){
+
+		    });
+			
+		    $("#myModal").on('hide.bs.modal', function(){
+		        $("#cartoonVideo").attr('src', '');
+		    });
+		    
+		    /* Assign the initially stored url back to the iframe src
+		    attribute when modal is displayed again */
+		    $("#myModal").on('show.bs.modal', function(){
+		    	$("#cartoonVideo").attr('src', url);
+		    });
 		},
+		
+		tester1: function() {
+		}
+
 	});
 
 	new ExercisePlanDetailListView();
 
-
+	
 })(jQuery);
