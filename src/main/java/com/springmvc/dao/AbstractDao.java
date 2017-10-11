@@ -7,7 +7,6 @@ import java.lang.reflect.ParameterizedType;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class AbstractDao<PK extends Serializable, T> {
@@ -33,6 +32,10 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 
 	public void persist(T entity) {
 		getSession().persist(entity);
+	}
+
+	public void update(T entity) {
+		getSession().update(entity);
 	}
 
 	public void delete(T entity) {
