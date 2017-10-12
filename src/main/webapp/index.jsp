@@ -32,7 +32,52 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        
+        	<script
+	    src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+	    </script>
+	<script
+	    src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" >
+	    </script>
+	<script
+	    src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" >
+	    </script>
+	<script type="text/javascript" src="js/wtf/views/exercisePlanView.js"></script>        
+        		<link href="<c:url value='/static/css/bootstrap.css' />"  rel="stylesheet"></link>
+		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
+        
+        
 </head>
+
+<script type="text/javascript">
+
+	
+	$( document ).ready(function() {
+		debugger;
+	    $.get("loggedinuser1/", function(data, status){
+	        alert("Data: " + data + "\nStatus: " + status);
+	        debugger;
+	        if(data.username != 'anonymousUser') {
+	        	$('#header_loggedout').hide();
+	        	$('#header_loggedin').show();
+	        	
+	        	$('#logged_in').text(data.username);
+	        }
+	    });
+	    
+	    $("#logout").click(function(){
+			debugger;
+		    $.get("logout/", function(data, status){
+				alert('You are logegd out...');
+	        	$('#header_loggedout').show();
+	        	$('#header_loggedin').hide();
+		    });
+	    });
+		
+	});
+ 
+</script>
 
 <body data-spy="scroll" data-target="#scroll-menu" data-offset="100">
     <!-- preloader -->
@@ -51,7 +96,24 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    
+
+
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="header_loggedin">
+                        <div class="header-top-right">
+                            <div class="single-htr">
+                                <i class="fa fa-key"></i>
+                                <span id="logged_in"></span>
+                            </div>
+                            <div class="single-htr">
+                                <i class="fa fa-user-times"></i>
+                                <span id="logout">Logout</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="header_loggedout">
                         <div class="header-top-right">
                             <!-- 
                             <div class="single-htr">

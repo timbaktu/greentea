@@ -61,7 +61,7 @@ public class AppController {
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);
 		model.addAttribute("loggedinuser", getPrincipal());
-		return "userslist";
+		return "index";
 	}
 
 	/**
@@ -187,10 +187,10 @@ public class AppController {
 		if (isCurrentAuthenticationAnonymous()) {
 			return "login";
 	    } else {
-	    	return "redirect:/list";  
+	    	return "redirect:/index.jsp";  
 	    }
 	}
-
+	
 	/**
 	 * This method handles logout requests.
 	 * Toggle the handlers if you are RememberMe functionality is useless in your app.
@@ -203,7 +203,7 @@ public class AppController {
 			persistentTokenBasedRememberMeServices.logout(request, response, auth);
 			SecurityContextHolder.getContext().setAuthentication(null);
 		}
-		return "redirect:/home.jsp";
+		return "redirect:/index.jsp";
 	}
 
 	/**
