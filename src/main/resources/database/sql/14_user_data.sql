@@ -1,0 +1,1 @@
+INSERT INTO `wethinkfitness`.`wf_user_schedule` (`duration`, `exercise_completed`, `notes`, `reps_completed`, `status`, `user_id`, `workout_time`, `schedule_id`) VALUES ('20', '5', 'complete exercise', '20', '0', '1', '15', '1');

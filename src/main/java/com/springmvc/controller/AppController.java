@@ -185,7 +185,7 @@ public class AppController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage() {
 		if (isCurrentAuthenticationAnonymous()) {
-			return "login";
+			return "index";
 	    } else {
 	    	return "redirect:/index.jsp";  
 	    }
