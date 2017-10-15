@@ -17,11 +17,15 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.springmvc.bean.PlanDetailBean;
+import com.springmvc.bean.UserPlanBean;
 import com.springmvc.mapper.PlanDetailMapper;
+import com.springmvc.mapper.UserPlanMapper;
 import com.springmvc.model.ExercisePlan;
 import com.springmvc.model.PlanDetail;
+import com.springmvc.model.UserPlan;
 import com.springmvc.service.ExercisePlanService;
 import com.springmvc.service.PlanDetailService;
+import com.springmvc.service.UserPlanService;
 
 @RestController
 @EnableWebMvc
@@ -33,6 +37,9 @@ public class ExercisePlanController {
     @Autowired
     PlanDetailService planservice;
 
+    @Autowired
+    UserPlanService userplanservice;
+    
     //-------------------Retrieve All Users--------------------------------------------------------
     @RequestMapping(value = "/exerciseplan/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ExercisePlan>> listAllExercisePlan() {
@@ -59,6 +66,24 @@ public class ExercisePlanController {
             return new ResponseEntity<List<PlanDetailBean>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
         return new ResponseEntity<List<PlanDetailBean>>(plandetailsbean, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/userplan/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<UserPlanBean>> listUserPlanDetail(@PathVariable("id") int id) {
+        List<UserPlan> userplandetails = userplanservice.findUserPlan(id);
+        List<UserPlanBean> userplandetailsbean  = new ArrayList<UserPlanBean>();
+        
+        for(UserPlan userplandetail : userplandetails) {
+        	UserPlanBean userplandetailbean = new UserPlanBean();
+        UserPlanMapper.createUserPlanBean(userplandetailbean, userplandetail);
+        	userplandetailsbean.add(userplandetailbean);
+        }
+        
+        
+        if(userplandetailsbean.isEmpty()){
+            return new ResponseEntity<List<UserPlanBean>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<UserPlanBean>>(userplandetailsbean, HttpStatus.OK);
     }
 
 }
