@@ -55,29 +55,65 @@
 <script type="text/javascript">
 
 	
-	$( document ).ready(function() {
+$( document ).ready(function() {
+	debugger;
+	// initaially, user is consideres as not logged in 
+	$('#header_loggedin').hide();
+    $.get("loggedinuser1/", function(data, status){
+        debugger;
+        // User has credentials
+        if(data.username != 'anonymousUser') {
+        	$('#header_loggedout').hide();
+        	$('#header_loggedin').show();
+        	
+        	$('#logged_in').text(data.username);
+        	
+			if(data.userId > 0) {
+				window.location.href='exercise-plan.html?id=' + data.userId;
+			}
+        	
+
+        }
+    });
+    
+    $("#logout").click(function(){
 		debugger;
-	    $.get("loggedinuser1/", function(data, status){
-	        alert("Data: " + data + "\nStatus: " + status);
-	        debugger;
-	        if(data.username != 'anonymousUser') {
-	        	$('#header_loggedout').hide();
-	        	$('#header_loggedin').show();
-	        	
-	        	$('#logged_in').text(data.username);
-	        }
+	    $.get("logout/", function(data, status){
+			alert('You are logegd out...');
+        	$('#header_loggedout').show();
+        	$('#header_loggedin').hide();
 	    });
-	    
-	    $("#logout").click(function(){
-			debugger;
-		    $.get("logout/", function(data, status){
-				alert('You are logegd out...');
-	        	$('#header_loggedout').show();
-	        	$('#header_loggedin').hide();
-		    });
-	    });
-		
-	});
+    });
+	
+    
+	$( "#registrationformAdd" ).submit(function( event ) {
+		 
+		  // Stop form from submitting normally
+		  event.preventDefault();
+		 
+		  // Get some values from elements on the page:
+		  	var $form = $( this );
+		    var email = $form.find( "input[name='email']" ).val();
+		    var fname = $form.find( "input[name='fname']" ).val();
+		    var lname = $form.find( "input[name='lname']" ).val();
+		    var username = $form.find( "input[name='ssoid']" ).val();
+		    var password = $form.find( "input[name='password']" ).val();
+		    
+		    //var data = '{"email": "' + email + '","firstName":"' + fname + '","lastName":"' + lname + '","ssoId":"' + username + '","password":"' + password + '"}';
+		    var data = '{"email": "' + email + '","firstName":"' + fname + '","lastName":"' + lname + '","ssoId":"' + username + '","password":"' + password + '"}';
+		    url = 'register';
+		 
+		  // Send the data using post
+		  var posting = $.post( url, data);
+		 
+		  // Put the results in a div
+		  posting.done(function( data ) {
+		   	debugger;
+			var content = $( data ).find( "#content" );
+		    $( "#result" ).empty().append( content );
+		  });
+		});
+});
  
 </script>
 
@@ -221,22 +257,22 @@
                                             <span>or</span>
                                         </div>
                                         <div class="rf-body-left">
-                                            <form action="#">
+                                            <form action="#" id="registrationformAdd">
                                                 <div class="rf-inputs-area">
                                                     <div class="rf-input-email rf-inputs">
-                                                        <input class="rf-email" type="email" placeholder="Email" required="">
+                                                        <input class="rf-email" type="email" name="email" placeholder="Email" required="">
                                                     </div>
                                                     <div class="rf-input-name rf-inputs">
-                                                        <input class="rf-name" type="text" placeholder="First name" required="">
+                                                        <input class="rf-name" type="text" name="fname" placeholder="First name" required="">
                                                     </div>
                                                     <div class="rf-input-name rf-inputs">
-                                                        <input class="rf-name" type="text" placeholder="Last name" required="">
+                                                        <input class="rf-name" type="text" name="lname" placeholder="Last name" required="">
                                                     </div>                                                     
                                                     <div class="rf-input-username rf-inputs">
-                                                        <input class="rf-username" type="text" placeholder="Username" required="">
+                                                        <input class="rf-username" type="text" name="ssoid" placeholder="Username" required="">
                                                     </div>
                                                     <div class="rf-input-password rf-inputs">
-                                                        <input class="rf-password type_password" type="password" placeholder="Password" required="">
+                                                        <input class="rf-password type_password" type="password" name="password" placeholder="Password" required="">
                                                         <span class="show-pass">Show</span>
                                                     </div>
                                                 </div>
@@ -244,7 +280,7 @@
                                                     <input type="checkbox">
                                                     <p>Sign me up for occasional newslettes and special offers</p>
                                                 </div>
-                                                <button class="register-btn hover-bs">REGISTER</button>
+                                                <button class="register-btn hover-bs" id="register">REGISTER</button>
                                             </form>
                                         </div>
                                         <div class="rf-body-right">
