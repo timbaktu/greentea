@@ -55,6 +55,8 @@
 		            $("#cartoonVideo").attr('src', url);
 		        });
 		        
+		        $(".modal-title").text($(event.target).data('workoutname'));
+		        
 		    });
 			
 		    $("#modal1").on('click', function(){
@@ -70,6 +72,8 @@
 		    $("#myModal").on('show.bs.modal', function(){
 		    	$("#cartoonVideo").attr('src', url);
 		    });
+		    
+		    
 		},
 		
 		tester1: function() {
