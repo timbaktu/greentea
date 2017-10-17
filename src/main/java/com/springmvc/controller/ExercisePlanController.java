@@ -97,14 +97,6 @@ public class ExercisePlanController {
 	@RequestMapping(value = { "/selectuserplan" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String selectuserplan(@RequestBody UserPlan userplan) {
-		/*
-		 * Preferred way to achieve uniqueness of field [sso] should be implementing custom @Unique annotation 
-		 * and applying it on field [sso] of Model class [User].
-		 * 
-		 * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors outside the validation
-		 * framework as well while still using internationalized messages.
-		 * 
-		 */
 		
 		selectuserplanService.saveUserPlan(userplan);
 		return "registrationsuccess";
