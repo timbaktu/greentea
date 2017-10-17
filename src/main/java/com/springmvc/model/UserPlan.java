@@ -17,6 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="wf_user_plan")
 public class UserPlan {
@@ -26,12 +27,12 @@ public class UserPlan {
 	private int id;
 	
 	@NotNull
-	@Size(min=3, max=50)
+//	@Size(min=3, max=50)
 	@Column(name = "user_id", nullable = false)
 	private int user_id;
 
 	@NotNull
-	@Size(min=3, max=50)
+//	@Size(min=3, max=50)
 	@Column(name = "plan_id", nullable = false)
 	private int plan_id;
 
@@ -64,6 +65,8 @@ public class UserPlan {
 	public void setPlan_id(int plan_id) {
 		this.plan_id = plan_id;
 	}
+	
+	
 
 
 	@Override

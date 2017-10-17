@@ -8,10 +8,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -22,10 +24,13 @@ import com.springmvc.mapper.PlanDetailMapper;
 import com.springmvc.mapper.UserPlanMapper;
 import com.springmvc.model.ExercisePlan;
 import com.springmvc.model.PlanDetail;
+import com.springmvc.model.User;
 import com.springmvc.model.UserPlan;
 import com.springmvc.service.ExercisePlanService;
 import com.springmvc.service.PlanDetailService;
+import com.springmvc.service.SelectUserPlanService;
 import com.springmvc.service.UserPlanService;
+import com.springmvc.service.UserService;
 
 @RestController
 @EnableWebMvc
@@ -39,6 +44,9 @@ public class ExercisePlanController {
 
     @Autowired
     UserPlanService userplanservice;
+    
+	@Autowired
+	SelectUserPlanService selectuserplanService;
     
     //-------------------Retrieve All Users--------------------------------------------------------
     @RequestMapping(value = "/exerciseplan/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -85,5 +93,21 @@ public class ExercisePlanController {
         }
         return new ResponseEntity<List<UserPlanBean>>(userplandetailsbean, HttpStatus.OK);
     }
+    
+	@RequestMapping(value = { "/selectuserplan" }, method = RequestMethod.POST)
+	@ResponseBody
+	public String selectuserplan(@RequestBody UserPlan userplan) {
+		/*
+		 * Preferred way to achieve uniqueness of field [sso] should be implementing custom @Unique annotation 
+		 * and applying it on field [sso] of Model class [User].
+		 * 
+		 * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors outside the validation
+		 * framework as well while still using internationalized messages.
+		 * 
+		 */
+		
+		selectuserplanService.saveUserPlan(userplan);
+		return "registrationsuccess";
+	}
 
 }
