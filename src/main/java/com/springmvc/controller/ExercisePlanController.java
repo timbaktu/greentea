@@ -87,6 +87,12 @@ public class ExercisePlanController {
         	userplandetailsbean.add(userplandetailbean);
         }
         
+        if(userplandetails == null || userplandetails.isEmpty()) {
+        	UserPlanBean userplandetailbean = new UserPlanBean();
+        	UserPlanMapper.createUserPlanBean(userplandetailbean, null);
+        	userplandetailsbean.add(userplandetailbean);
+        }
+        
         
         if(userplandetailsbean.isEmpty()){
             return new ResponseEntity<List<UserPlanBean>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
