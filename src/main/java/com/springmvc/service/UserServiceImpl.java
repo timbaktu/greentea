@@ -1,7 +1,10 @@
 package com.springmvc.service;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
+import org.hibernate.mapping.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.springmvc.dao.UserDao;
 import com.springmvc.model.User;
+import com.springmvc.model.UserProfile;
+import com.springmvc.model.UserProfileType;
 
 
 @Service("userService")
@@ -32,6 +37,12 @@ public class UserServiceImpl implements UserService{
 
 	public void saveUser(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		HashSet<UserProfile> hup = new HashSet<UserProfile>();
+		UserProfile up = new UserProfile();
+		up.setId(2);
+		up.setType("ADMIN");
+		hup.add(up);
+		user.setUserProfiles(hup);
 		dao.save(user);
 	}
 
