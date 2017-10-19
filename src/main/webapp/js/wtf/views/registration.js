@@ -23,15 +23,19 @@
 		
 		el: $('#registrationformAdd'),
 		
+	    events: {
+	        'click #register'        : 'userRegistration',
+	    },
+	    
 		initialize : function() {
+			alert('init');
 			var self = this;
+			_.bindAll(this,'userRegistration');
+			e.preventDefault();
 		},
 		
-	    events: {
-	        'submit'        : 'userRegistration',
-	    },
-		
 	    userRegistration: function(e) {
+	    	alert('hurray');
 	    	debugger;
 	        //Save Animal model to server data
 	        e.preventDefault();

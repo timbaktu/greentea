@@ -69,7 +69,20 @@ $( document ).ready(function() {
         	$('#logged_in').text(data.username);
         	
 			if(data.userId > 0) {
-				window.location.href='exercise-plan.html?id=' + data.userId;
+				// This call is used to check if user already has a plan
+				$.get("userplan/"+data.userId , function(userplan, status){
+					// Assumption here FOR NOW is that user will have ONLY one plan
+					var userPlan = userplan[0].plan_id;
+					// userPlan = 0 means no plan selected
+					if(userPlan == 0) {
+						window.location.href='pricing-table.html';
+					}
+					else {
+						window.location.href='exercise-plan.html?userid=' + userplan.user_id;
+					}
+						
+				});
+				
 			}
         	
 
@@ -103,15 +116,21 @@ $( document ).ready(function() {
 		    var data = '{"email": "' + email + '","firstName":"' + fname + '","lastName":"' + lname + '","ssoId":"' + username + '","password":"' + password + '"}';
 		    url = 'register';
 		 
-		  // Send the data using post
-		  var posting = $.post( url, data);
-		 
-		  // Put the results in a div
-		  posting.done(function( data ) {
-		   	debugger;
-			var content = $( data ).find( "#content" );
-		    $( "#result" ).empty().append( content );
-		  });
+
+            $.ajax({      
+                url: "register",
+                type: "POST",
+                data: data,
+                Accept : "application/json",
+                contentType: "application/json", 
+                dataType: "json",
+                    success: function(resultData) {
+						alert('Registration successful..');
+                         //do stuff
+                    },
+
+              });
+		    
 		});
 });
  

@@ -87,6 +87,14 @@
             
 </head>
 
+<script type="text/javascript">
+	function getVal(str) {
+	    var v = window.location.search.match(new RegExp('(?:[\?\&]'+str+'=)([^&]+)'));
+	    return v ? v[1] : null;
+	}
+</script>
+
+
 <body data-spy="scroll" data-target="#scroll-menu" data-offset="100">
     <!-- preloader -->
     <div id="preloader"></div>
