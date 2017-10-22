@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class ExercisePlanScheduleController {
     }
 
   @RequestMapping(value = "/exerciseuserschedule/{user_id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<List<ExerciseUserScheduleBean>>  listExerciseUserSchedule(@PathVariable("user_id") int id) {
+  public ResponseEntity<List<ExerciseUserScheduleBean>>  listExerciseUserSchedule(@PathVariable("user_id") int id) throws ParseException {
     List<ExerciseUserSchedule> exerciseuserschedules = userservice.findExerciseUserSchedule(id);
     List<ExerciseUserScheduleBean> exerciseUserScheduleBeans = new ArrayList<ExerciseUserScheduleBean>();        
     for(ExerciseUserSchedule exerciseUserSchedule : exerciseuserschedules) {

@@ -65,7 +65,7 @@ public class LoginController {
 	
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String saveUser(@RequestBody User user) {
+	public String saveUser(@RequestBody User user,BindingResult result) {
 		/*
 		 * Preferred way to achieve uniqueness of field [sso] should be implementing custom @Unique annotation 
 		 * and applying it on field [sso] of Model class [User].

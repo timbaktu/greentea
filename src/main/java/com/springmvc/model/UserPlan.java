@@ -1,6 +1,9 @@
 package com.springmvc.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +23,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @SuppressWarnings("serial")
 @Entity
 @Table(name="wf_user_plan")
-public class UserPlan {
+public class UserPlan implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +39,23 @@ public class UserPlan {
 	@Column(name = "plan_id", nullable = false)
 	private int plan_id;
 
+	@NotNull
+//	@Size(min=3, max=50)
+	@Column(name = "start_date", nullable = false)
+	private Date start_date;
+
 	
+
+	public Date getStart_date() {
+		return start_date;
+	}
+
+
+	public void setStart_date(Date start_date) {
+		this.start_date = start_date;
+	}
+
+
 	public int getId() {
 		return id;
 	}

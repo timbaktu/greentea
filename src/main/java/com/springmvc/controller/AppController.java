@@ -1,5 +1,6 @@
 package com.springmvc.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -9,6 +10,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,13 +24,21 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.springmvc.bean.UserRegistrationBean;
+import com.springmvc.mapper.UserRegistrationMapper;
 import com.springmvc.model.User;
+import com.springmvc.model.UserPlan;
 import com.springmvc.model.UserProfile;
+import com.springmvc.model.UserRegistration;
+import com.springmvc.service.UserPlanService;
 import com.springmvc.service.UserProfileService;
+import com.springmvc.service.UserRegistrationService;
 import com.springmvc.service.UserService;
 
 
@@ -36,6 +48,9 @@ import com.springmvc.service.UserService;
 @SessionAttributes("roles")
 public class AppController {
 
+    @Autowired
+    UserRegistrationService userregistrationservice;
+	
 	@Autowired
 	UserService userService;
 	
@@ -75,7 +90,7 @@ public class AppController {
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "registration";
 	}
-
+	
 	/**
 	 * This method will be called on form submission, handling POST request for
 	 * saving user in database. It also validates the user input
@@ -220,6 +235,38 @@ public class AppController {
 		}
 		return userName;
 	}
+	
+	@RequestMapping(value = { "/selectuserregister" }, method = RequestMethod.POST)
+	@ResponseBody
+	public String selectuserplan(@RequestBody UserRegistration userregistration) {
+
+		userregistrationservice.saveUserRegistration(userregistration);
+		return "registrationsuccess";
+	}
+	
+    @RequestMapping(value = "/c/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<UserRegistrationBean>> listUserRegistrationDetail(@PathVariable("id") int id) {
+        List<UserRegistration> userregistrationdetails = userregistrationservice.findUserRegistration(id);
+        List<UserRegistrationBean> userregistrationdetailsbean  = new ArrayList<UserRegistrationBean>();
+        
+        for(UserRegistration userregistrationdetail : userregistrationdetails) {
+        	UserRegistrationBean userregistrationdetailbean = new UserRegistrationBean();
+        	UserRegistrationMapper.createUserRegistrationBean(userregistrationdetailbean, userregistrationdetail);
+        	userregistrationdetailsbean.add(userregistrationdetailbean);
+        }
+        
+        if(userregistrationdetails == null || userregistrationdetails.isEmpty()) {
+        	UserRegistrationBean userregistrationdetailbean = new UserRegistrationBean();
+        	UserRegistrationMapper.createUserRegistrationBean(userregistrationdetailbean, null);
+        	userregistrationdetailsbean.add(userregistrationdetailbean);
+        }
+        
+        
+        if(userregistrationdetailsbean.isEmpty()){
+            return new ResponseEntity<List<UserRegistrationBean>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<UserRegistrationBean>>(userregistrationdetailsbean, HttpStatus.OK);
+    }
 	
 	/**
 	 * This method returns true if users is already authenticated [logged-in], else false.

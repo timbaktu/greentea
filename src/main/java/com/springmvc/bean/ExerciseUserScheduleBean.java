@@ -7,23 +7,18 @@ public class ExerciseUserScheduleBean implements java.io.Serializable{
 
 	private int user_id;
 	private int schedule_id;
-	private int status;
-	private int reps_completed;
-	private int exercise_completed;
-	private String notes;
-	private int duration;
-	private String workout_time;
 	private int planid;
 	private int day;
 	private int exercise_type_id;
 	private String title;
 	private String description;
-	private String className;
+	@JsonProperty("start")
 	private String startDate;
+	@JsonProperty("end")
+	private String endDate;
+	private Boolean allDay;
+	private String className;
 	private String url;
-
-	
-	
 	public int getUser_id() {
 		return user_id;
 	}
@@ -35,42 +30,6 @@ public class ExerciseUserScheduleBean implements java.io.Serializable{
 	}
 	public void setSchedule_id(int schedule_id) {
 		this.schedule_id = schedule_id;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	public int getReps_completed() {
-		return reps_completed;
-	}
-	public void setReps_completed(int reps_completed) {
-		this.reps_completed = reps_completed;
-	}
-	public int getExercise_completed() {
-		return exercise_completed;
-	}
-	public void setExercise_completed(int i) {
-		this.exercise_completed = i;
-	}
-	public String getNotes() {
-		return notes;
-	}
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-	public int getDuration() {
-		return duration;
-	}
-	public void setDuration(int i) {
-		this.duration = i;
-	}
-	public String getWorkout_time() {
-		return workout_time;
-	}
-	public void setWorkout_time(String workout_time) {
-		this.workout_time = workout_time;
 	}
 	public int getPlanid() {
 		return planid;
@@ -102,17 +61,29 @@ public class ExerciseUserScheduleBean implements java.io.Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getClassName() {
-		return className;
-	}
-	public void setClassName(String className) {
-		this.className = className;
-	}
 	public String getStartDate() {
 		return startDate;
 	}
 	public void setStartDate(String startDate) {
 		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	public Boolean getAllDay() {
+		return allDay;
+	}
+	public void setAllDay(Boolean allDay) {
+		this.allDay = allDay;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
 	}
 	public String getUrl() {
 		return url;
@@ -121,7 +92,7 @@ public class ExerciseUserScheduleBean implements java.io.Serializable{
 		this.url = url;
 	}
 
-	
+
 	
 	
 

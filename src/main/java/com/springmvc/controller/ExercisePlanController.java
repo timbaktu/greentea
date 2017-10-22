@@ -100,6 +100,8 @@ public class ExercisePlanController {
         return new ResponseEntity<List<UserPlanBean>>(userplandetailsbean, HttpStatus.OK);
     }
     
+
+    
 	@RequestMapping(value = { "/selectuserplan" }, method = RequestMethod.POST)
 	@ResponseBody
 	public String selectuserplan(@RequestBody UserPlan userplan) {

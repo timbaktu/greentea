@@ -1,168 +1,169 @@
 package com.springmvc.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
+import javax.persistence.SecondaryTables;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ForeignKey;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
 
 @Entity
-@Table(name="wf_user_schedule") 
+@Table(name="wf_exerciseplanschedule") 
+//@SecondaryTables({
+//    @SecondaryTable(name="wf_user_plan", pkJoinColumns={
+//            @PrimaryKeyJoinColumn(name="plan_id", referencedColumnName="planid") })
+//      })
 
-public class ExerciseUserSchedule  implements java.io.Serializable{
+public class ExerciseUserSchedule implements java.io.Serializable{
 
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+	public ExerciseUserSchedule() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@ManyToOne
-	@ForeignKey(name="schedule_id")
-	private ExerciseSchedule schedule;
+	@ForeignKey(name="exercise_type_id")
+	private ExerciseType exercise_type;
+
+	@ManyToOne
+	    @JoinColumn(name = "planid",referencedColumnName = "plan_id", nullable=false)
+	@ForeignKey(name = "plan_id")     
+	private UserPlan userplan;
+
+	
+	
+
+	public UserPlan getUserplan() {
+		return userplan;
+	}
+
+	public void setUserplan(UserPlan userplan) {
+		this.userplan = userplan;
+	}
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+//	@NotNull
+//	@Size(min=1, max=50)
+//	@Column(name = "planid", nullable = false)
+//	private int planid;
+	
+	@NotNull
+	@Size(min=1, max=50)
+	@Column(name = "day", nullable = false)
+	private int day;
+	
+
+//
+//	
+//	@NotNull
+//	@Size(min=3, max=50)
+//	@Column(table = "wf_exercise_type", name = "classname", nullable = false)
+//	private String classname;
+//	
+//	@NotNull
+//	@Size(min=3, max=50)
+//	@Column(table = "wf_exercise_type", name = "description", nullable = false)
+//	private String description;
+	
+	
 	public int getId() {
 		return id;
 	}
 
+//	public void setplanId(int planid) {
+//		this.planid = planid;
+//	}
+//
+//	public int getplanid() {
+//		return planid;
+//	}
+
+	public int getExercise_type_id() {
+		return exercise_type.getId();
+	}
+
+//	public void setExercise_type_id(int exercise_type_id) {
+//		this.exercise_type_id = exercise_type_id;
+//	}
+
+	public void setday(int day) {
+		this.day = day;
+	}
+
+	public int getday() {
+		return day;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	@NotNull
-	@Size(min=3, max=50)
-	@Column(name = "user_id", nullable = false)
-	private int user_id;
-	
 
-//	@NotNull
-//	@Size(min=3, max=50)
-//	@Column(name = "schedule_id", nullable = false)
-//	private int schedule_id;
-	
-	@NotNull
-	@Size(min=3, max=50)
-	@Column(name = "status", nullable = false)
-	private int status;
-	
-	@NotNull
-	@Size(min=3, max=50)
-	@Column(name = "reps_completed", nullable = false)
-	private int reps_completed;
-	
-	@NotNull
-	@Size(min=3, max=50)
-	@Column(name = "exercise_completed", nullable = false)
-	private int exercise_completed;
 
-	@NotNull
-	@Size(min=3, max=50)
-	@Column(name = "notes", nullable = false)
-	private String notes;
-	
-	@NotNull
-	@Size(min=3, max=50)
-	@Column(name = "duration", nullable = false)
-	private int duration;
-	
-	
-	@NotNull
-	@Size(min=3, max=50)
-	@Column(name = "workout_time", nullable = false)
-	private String workout_time;
-
-	public ExerciseSchedule getExercise_user_schedule() {
-		return schedule;
+		public String getName() {
+		return exercise_type.getName();
 	}
 
-	public void setExercise_user_schedule(ExerciseSchedule exercise_user_schedule) {
-		this.schedule = exercise_user_schedule;
-	}
+//		public int getuser_id() {
+//		return userplan.getUser_id();
+//		}
+//	public void setName(String name) {
+//		this.name = name;
+//
+//	}
+	
+	
+	public String getclassName() {
+	return exercise_type.getClassname();
+}
 
-	public int getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
-
-	public int getSchedule_id() {
-		return schedule.getId();
-	}
-
-//	public void setSchedule_id(int schedule_id) {
-//		this.schedule_id = schedule_id;
+//public void setclassName(String classname) {
+//	this.classname = classname;
+//}
+	
+//	public void setDescription(String description) {
+//		this.description = description;
 //	}
 
-	public int getStatus() {
-		return status;
+		
+	public String getDescription() {
+		return exercise_type.getDescription();
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
 
-	public int getReps_completed() {
-		return reps_completed;
-	}
-
-	public void setReps_completed(int reps_completed) {
-		this.reps_completed = reps_completed;
-	}
-
-	public int getExercise_completed() {
-		return exercise_completed;
-	}
-
-	public void setExercise_completed(int exercise_completed) {
-		this.exercise_completed = exercise_completed;
-	}
-
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
-	public int getDuration() {
-		return duration;
-	}
-
-	public int getPlanID() {
-		return schedule.getplanid() ;
-	}
-	
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
-
-	public String getWorkout_time() {
-		return workout_time;
-	}
-
-	public void setWorkout_time(String workout_time) {
-		this.workout_time = workout_time;
-	}
-	
 	@Override
 	public String toString() {
-		return "ExerciseUserSchedule [planid=" + getPlanID() + ",exercise_type_id=" + schedule.getExercise_type_id() + ",day=" + schedule.getday() + ", name=" + schedule.getName() + ", classname=" + schedule.getclassName() + ", description=" +  schedule.getDescription() + ",user_id=" + user_id + ",schedule_id=" + getSchedule_id() + ",status=" + status + ",duration=" + duration + ", notes=" + notes + ", exercise_completed=" + exercise_completed + ", reps_completed="
-				+ reps_completed + "]";
+		return "ExerciseUserSchedule [userid=" + getUserplan().getUser_id() + "exercise_type_id=" + getId() + ",id=" + id + ",day=" + day + ", name=" + getName() + ", classname=" + getclassName() + ", description="
+				+ getDescription() + "]";
 	}
 	
 	
+	
+
 }
