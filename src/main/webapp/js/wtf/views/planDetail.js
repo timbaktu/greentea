@@ -8,7 +8,11 @@
 
 	var PlanDetailList = Backbone.Collection.extend({
 		model : PlanDetail,
-		url : 'plandetail/1'
+		//url : 'plandetail/1'
+		initialize: function(models, options) {
+			debugger;
+			this.url = 'plandetail/' + options.planId;
+		},
 	});
 	
 
@@ -18,7 +22,9 @@
 		
 		initialize : function() {
 			var self = this;
-			this.collection = new PlanDetailList();
+			debugger;
+			var selectedPlanId = getVal('planid');
+			this.collection = new PlanDetailList([], {planId: selectedPlanId});
 		    this.collection.fetch().done(function(){
 		        self.render();
 		      });
@@ -35,5 +41,9 @@
 
 	new PlanDetailListView();
 
-
+	function getVal(str) {
+	    var v = window.location.search.match(new RegExp('(?:[\?\&]'+str+'=)([^&]+)'));
+	    return v ? v[1] : null;
+	}
+	
 })(jQuery);
