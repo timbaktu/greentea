@@ -472,7 +472,7 @@ $( document ).ready(function() {
                     <div class="hero-content">
                         <h1 class="hc-header">Online Personal Training</h1>
                         <p class="hc-text">Maximum Results in Minimum Time, no matter your location</p>
-                        <a class="hc-link" href="profileinformation.html">SELECT MY PLAN</a>
+                        <a class="hc-link" href="pricing-table.html">SELECT MY PLAN</a>
                     </div>
                 </div>
             </div>
@@ -730,7 +730,7 @@ $( document ).ready(function() {
             <div class="row">
                 <div class="col-xs-12">
                     <div class="myplan-content">
-                        <a class="hc-link" href="profileinformation.html">FIND MY PLAN</a>
+                        <a class="hc-link" href="pricing-table.html">FIND MY PLAN</a>
                     </div>
                 </div>
             </div>
