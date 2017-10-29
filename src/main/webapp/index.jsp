@@ -78,7 +78,7 @@ $( document ).ready(function() {
 						window.location.href='pricing-table.html';
 					}
 					else {
-						window.location.href='exercise-plan.html?userid=' + userplan.user_id;
+						window.location.href='exercise-plan.html?userid=' + userplan[0].user_id;
 					}
 						
 				});
