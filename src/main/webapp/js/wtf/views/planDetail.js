@@ -10,7 +10,6 @@
 		model : PlanDetail,
 		//url : 'plandetail/1'
 		initialize: function(models, options) {
-			debugger;
 			this.url = 'plandetail/' + options.planId;
 		},
 	});
@@ -22,7 +21,6 @@
 		
 		initialize : function() {
 			var self = this;
-			debugger;
 			var selectedPlanId = getVal('planid');
 			this.collection = new PlanDetailList([], {planId: selectedPlanId});
 		    this.collection.fetch().done(function(){

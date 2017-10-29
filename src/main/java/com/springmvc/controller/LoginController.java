@@ -65,7 +65,7 @@ public class LoginController {
 	
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String saveUser(@RequestBody User user,BindingResult result) {
+	public Map<String, String> saveUser(@RequestBody User user,BindingResult result) {
 		/*
 		 * Preferred way to achieve uniqueness of field [sso] should be implementing custom @Unique annotation 
 		 * and applying it on field [sso] of Model class [User].
@@ -76,7 +76,19 @@ public class LoginController {
 		 */
 		
 		userService.saveUser(user);
-		return "registrationsuccess";
+		
+		User createdUser = userService.findBySSO(user.getSsoId());
+        Map<String, String> map = new HashMap<>();
+        if(createdUser != null) {
+            map.put("username", createdUser.getSsoId());
+            map.put("userId", createdUser.getId()+"");
+        }
+        else {
+        	System.out.println("SOMETHING IS REALLY WRONG !!!!");
+        }
+        
+        map.put("status", "registrationsuccess");
+        return map;
 	}
 
 }
