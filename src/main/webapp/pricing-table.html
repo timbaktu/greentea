@@ -44,17 +44,10 @@
 	    $("a").trigger("click");
 	});
 	
-	
-/*  	$(document).on("click", "a", function(){
+  	$(document).on("click", "a", function(){
 		var selectedPlanId = $(this).attr('id');
-		//var planDetail = new PlanDetail();
-	
-		//var planDetailListView = new PlanDetailListView(planDetail);
  		window.location.href='plan-detail.html?planid=' + selectedPlanId;
- 	
-	}); */
-	
-
+	}); 
 	
 </script>
             
@@ -69,7 +62,7 @@
                                                 <img src="img/banner/logo.png" alt="logo" />
                                             </div>
                                             <h1>{{attributes.name}}</h1>
-                                            <a href="plan-detail.html?planid=" + {{attributes.id}} ><h1>View Plan</h1></a>
+                                            <a id={{attributes.id}} ><h1>View Plan</h1></a>
                                         </div>
                                     </div>
                                 </div>
