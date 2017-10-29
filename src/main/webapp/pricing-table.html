@@ -45,14 +45,14 @@
 	});
 	
 	
-	$(document).on("click", "a", function(){
+/*  	$(document).on("click", "a", function(){
 		var selectedPlanId = $(this).attr('id');
 		//var planDetail = new PlanDetail();
 	
 		//var planDetailListView = new PlanDetailListView(planDetail);
-		window.location.href='plan-detail.html?planid=' + selectedPlanId;
-		
-	});
+ 		window.location.href='plan-detail.html?planid=' + selectedPlanId;
+ 	
+	}); */
 	
 
 	
@@ -68,11 +68,8 @@
                                             <div class="logo-img">
                                                 <img src="img/banner/logo.png" alt="logo" />
                                             </div>
-                                            <p>CRAND OPENNING</p>
                                             <h1>{{attributes.name}}</h1>
-                                            <h4><i class="fa fa-map-marker"></i>MAMER GYM. AVENUR STREET ?? CHICACO</h4>
-                                            <p class="phone"><i class="fa fa-phone"></i>+87 123 12 1234</p>
-                                            <a id={{attributes.id}} class="website">WWW.FITNESS.COM</a>
+                                            <a href="plan-detail.html?planid=" + {{attributes.id}} ><h1>View Plan</h1></a>
                                         </div>
                                     </div>
                                 </div>
@@ -344,7 +341,7 @@
     </header>
     <!-- header-end -->
     <!-- hero-section-start -->
-    <div class="hero-section" id="home">
+<!--     <div class="hero-section" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -365,15 +362,15 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- hero-section-end -->
     <!--fitness-banner section start-->
     <div class="fitness-banner-area">
         <div class="container">
             <div class="fitness-banner">
-                <div class="col-md-3 col-sm-3">
-                    <div class="bn-line"></div>
-                </div>
+                 <div class="col-md-3 col-sm-3">
+<!--                     <div class="bn-line"></div>
+ -->                </div> 
                 <div class="col-md-9 col-sm-9">
                     <div class="banner-title-area">
                         <h1>We Offer Best Fitness Plan For<br/>Your Helath and Body</h1>
@@ -391,10 +388,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
     <!--fitness-banner section end-->
     <!-- pricing-plan-area-start -->
-    <div class="pricing-plan-area">
+   <!--  <div class="pricing-plan-area">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -565,7 +562,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- pricing-plan-area-end -->
     <!--subscribe section start-->
     <div class="subscribe-section">
