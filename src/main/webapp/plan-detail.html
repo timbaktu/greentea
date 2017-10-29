@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -92,6 +93,53 @@
 	    var v = window.location.search.match(new RegExp('(?:[\?\&]'+str+'=)([^&]+)'));
 	    return v ? v[1] : null;
 	}
+	
+	$( document ).ready(function() {
+	
+		debugger;
+		$('.input-group.date').datepicker({
+		    autoclose: true,
+		    todayHighlight: true
+		});
+		
+	    //$("a").trigger("click");
+	    $("#confirm_plan").click(function() {
+	        // Check if user if logged in
+	        // Yes, show logged in users plan schedule 
+	        // No , show registration page
+	        debugger;
+	    	$.get("loggedinuser1/", function(data, status){
+	            // User is logged in
+	            debugger;
+	            if(data.username != 'anonymousUser') {
+	            	$('#header_loggedout').hide();
+	            	$('#header_loggedin').show();
+	            	
+	            	$('#logged_in').text(data.username);
+	            	
+	    			if(data.userId > 0) {
+	    				// This call is used to check if user already has a plan
+	    				$.get("userplan/"+data.userId , function(userplan, status){
+	    					// Assumption here FOR NOW is that user will have ONLY one plan
+	    					var userPlan = userplan[0].plan_id;
+	    					// userPlan = 0 means no plan selected
+	    					if(userPlan == 0) {
+	    						window.location.href='registration.html'; 
+	    					}
+	    					else {
+	    						window.location.href='exercise-plan.html?userid=' + userplan.user_id;
+	    					}
+	    						
+	    				});
+	    			}
+	            }
+	            else {
+	            	window.location.href='registration.html';
+	            }
+	        });
+	    }); 
+	    
+	});
 </script>
 
 
@@ -423,9 +471,17 @@
 <div class="work-plan" id="plandetail">
 </div>
 
+					<p class="title" style="padding-top: 35px; text-decoration: underline; font-size:medium; font-weight:700;">Select Start Date : </p>
+                    <div class="input-group date">
+					  <input type="text" class="form-control input-sm"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+					</div>
+
     								<div class="pic-submit">
-                                        <input onclick="window.location.href='exercise-plan.html'" class="hover-bs" type="submit" value="CONFIRM PLAN">
+    									<!-- <input id="confirm_plan" onclick="window.location.href='exercise-plan.html'" class="hover-bs" type="submit" value="CONFIRM PLAN"> -->
+                                        <input id="confirm_plan" class="hover-bs" type="submit" value="CONFIRM PLAN">
                                     </div>  
+                                    
+                                    <div id="dialog"></div>
 </div>
 <div class="work-plan-sec">
 
@@ -699,6 +755,7 @@
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
 </body>
 
 <script>
