@@ -8,7 +8,10 @@
 
 	var ExercisePlanDetailList = Backbone.Collection.extend({
 		model : ExercisePlanDetail,
-		url : 'exerciseplandetail/1'
+		//url : 'exerciseplandetail/1'
+		initialize: function(models, options) {
+			this.url = 'exerciseplandetail/' + options.exerciseId;
+		},
 	});
 	
 
@@ -25,7 +28,8 @@
 			  
 		initialize : function() {
 			var self = this;
-			this.collection = new ExercisePlanDetailList();
+			var exerciseId = getVal('id');
+			this.collection = new ExercisePlanDetailList([], {exerciseId: exerciseId});
 		    this.collection.fetch().done(function(){
 		        self.render();
 		      });
@@ -82,6 +86,10 @@
 	});
 
 	new ExercisePlanDetailListView();
-
+	
+	function getVal(str) {
+	    var v = window.location.search.match(new RegExp('(?:[\?\&]'+str+'=)([^&]+)'));
+	    return v ? v[1] : null;
+	}
 	
 })(jQuery);
