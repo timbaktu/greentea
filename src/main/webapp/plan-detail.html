@@ -95,8 +95,7 @@
 	}
 	
 	$( document ).ready(function() {
-	
-		debugger;
+
 		$('.input-group.date').datepicker({
 		    autoclose: true,
 		    todayHighlight: true
@@ -107,16 +106,16 @@
 	        // Check if user if logged in
 	        // Yes, show logged in users plan schedule 
 	        // No , show registration page
-	        debugger;
 	    	$.get("loggedinuser1/", function(data, status){
-	            // User is logged in
-	            debugger;
+            	
+            	// selected plan start date
+				var selectedStartDate = $('#start-date-picker').val(); 
+	    		// User is logged in
 	            if(data.username != 'anonymousUser') {
 	            	$('#header_loggedout').hide();
 	            	$('#header_loggedin').show();
 	            	
 	            	$('#logged_in').text(data.username);
-	            	
 	    			if(data.userId > 0) {
 	    				// This call is used to check if user already has a plan
 	    				$.get("userplan/"+data.userId , function(userplan, status){
@@ -124,7 +123,7 @@
 	    					var userPlan = userplan[0].plan_id;
 	    					// userPlan = 0 means no plan selected
 	    					if(userPlan == 0) {
-	    						window.location.href='registration.html'; 
+	    						window.location.href='registration.html?selectedstartdate=' + selectedStartDate; 
 	    					}
 	    					else {
 	    						window.location.href='exercise-plan.html?userid=' + userplan.user_id;
@@ -133,8 +132,10 @@
 	    				});
 	    			}
 	            }
+	         // User is NOT logged in
 	            else {
-	            	window.location.href='registration.html';
+	            	var planid = getVal('planid');
+	            	window.location.href='registration.html?selectedplanid=' + planid + '&selectedstartdate=' + selectedStartDate; 
 	            }
 	        });
 	    }); 
@@ -473,7 +474,7 @@
 
 					<p class="title" style="padding-top: 35px; text-decoration: underline; font-size:medium; font-weight:700;">Select Start Date : </p>
                     <div class="input-group date">
-					  <input type="text" class="form-control input-sm"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+					  <input id="start-date-picker" type="text" class="form-control input-sm"><span class="input-group-addon" style="width:0%"><i class="glyphicon glyphicon-th"></i></span>
 					</div>
 
     								<div class="pic-submit">

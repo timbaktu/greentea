@@ -8,6 +8,8 @@ public class UserPlanBean implements java.io.Serializable{
 	private int id;
 	private int user_id;
 	private int plan_id;
+	private String start_date;
+	
 	public int getId() {
 		return id;
 	}
@@ -25,6 +27,12 @@ public class UserPlanBean implements java.io.Serializable{
 	}
 	public void setPlan_id(int plan_id) {
 		this.plan_id = plan_id;
+	}
+	public String getStart_date() {
+		return start_date;
+	}
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
 	}
 
 	

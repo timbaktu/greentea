@@ -320,6 +320,12 @@
     <!-- hero-section-end -->
     
  <script>
+ 
+	function getVal(str) {
+	    var v = window.location.search.match(new RegExp('(?:[\?\&]'+str+'=)([^&]+)'));
+	    return v ? v[1] : null;
+	}
+	
 $(document).ready(function() {
         
         //THIS ALERT FIRES WHEN THE PAGE LOADS
@@ -356,7 +362,29 @@ $(document).ready(function() {
                 dataType: "json",
                     success: function(resultData) {
 						alert('Registration successful..');
+						var newUserId = resultData.userId;
+						var selectedPlanId = getVal('selectedplanid');
+						var selectedStartDate = getVal('selectedstartdate');
+						
+						
+						var mappingData = '{"user_id": "' + newUserId + '","plan_id":"' + selectedPlanId + '","start_date":"' + selectedStartDate + '"}';
                          //do stuff
+                         // Not that registration is successful, we want to attached user to plan and start date
+                         debugger;
+			            $.ajax({      
+			                url: "selectuserplan",
+			                type: "POST",
+			                data: mappingData,
+			                Accept : "application/json",
+			                contentType: "application/json", 
+			                dataType: "json",
+			                    success: function(resultData) {
+									alert('User Plan Mapping successful..');
+			                         //do stuff
+			                         // Not that registration is successful, we want to attached user to plan and start date
+			                    },
+
+			              });
                     },
 
               });

@@ -104,9 +104,11 @@ public class ExercisePlanController {
     
 	@RequestMapping(value = { "/selectuserplan" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String selectuserplan(@RequestBody UserPlan userplan) {
+	public String selectuserplan(@RequestBody UserPlanBean userPlanBean) {
 		
-		selectuserplanService.saveUserPlan(userplan);
+		UserPlan userplanToSave = new UserPlan();
+		UserPlanMapper.createUserPlan(userPlanBean, userplanToSave);
+		selectuserplanService.saveUserPlan(userplanToSave);
 		return "registrationsuccess";
 	}
 
