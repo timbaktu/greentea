@@ -36,19 +36,7 @@
     <!-- <script type="text/javascript" src="js/wtf/views/registration.js"></script> -->  
 </head>
 
-<script type="text/javascript">
-
-	
-$( document ).ready(function() {
-	
-	$( "#registrationformAdd" ).submit(function( event ) {
-		
-		alert();	    
-	});	
-	
-});
- 
-</script>
+   
 
 <body data-spy="scroll" data-target="#scroll-menu" data-offset="100">
     <!-- preloader -->
@@ -330,6 +318,81 @@ $( document ).ready(function() {
         </div>
     </div>
     <!-- hero-section-end -->
+    
+ <script>
+$(document).ready(function() {
+        
+        //THIS ALERT FIRES WHEN THE PAGE LOADS
+        //NOT WHEN A BUTTON IS CLICKED
+/*         alert('jquery');
+ */      
+        $("#emailform").submit(function(event) {
+            
+            //THIS ALERT FIRES WHEN THE SUBMIT BUTTON IS CLICK
+            //OR WHEN THE SUBMIT EVENT IS TRIGGERED THROUGH SOME OTHER MEANS
+            alert('submitting the form');
+          
+            event.preventDefault();
+
+  		  // Get some values from elements on the page:
+		  	var $form = $( this );
+		    var email = $form.find( "input[name='email']" ).val();
+		    var fname = $form.find( "input[name='fname']" ).val();
+		    var lname = $form.find( "input[name='lname']" ).val();
+		    var username = $form.find( "input[name='ssoid']" ).val();
+		    var password = $form.find( "input[name='password']" ).val();
+		    
+		    //var data = '{"email": "' + email + '","firstName":"' + fname + '","lastName":"' + lname + '","ssoId":"' + username + '","password":"' + password + '"}';
+		    var data = '{"email": "' + email + '","firstName":"' + fname + '","lastName":"' + lname + '","ssoId":"' + username + '","password":"' + password + '"}';
+		    url = 'register';
+		 
+
+            $.ajax({      
+                url: "register",
+                type: "POST",
+                data: data,
+                Accept : "application/json",
+                contentType: "application/json", 
+                dataType: "json",
+                    success: function(resultData) {
+						alert('Registration successful..');
+                         //do stuff
+                    },
+
+              });
+            
+            /*var $form = $(this),
+                url = $form.attr('action');
+            alert(url);
+            $.post(url, {
+                    param1: $("#email").val()
+                })
+                .success(function(data) {
+                    if (data == "found") {}
+                });*/
+        });
+    });
+    </script>
+
+<script type="text/javascript">
+
+	
+$(document).ready(function() {
+	
+	$( "#registrationformAdd" ).submit(function( event ) {
+		
+		alert("hello");	    
+	});	
+	
+});
+ 
+</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <form class="form-signin" role="form" id="emailform" action="request.php" method="post"
+  name="emailform">
+    <input type="email" id="email" name="email" required="" /> <button name="submit"
+    class="btn btn-lg btn-primary btn-block" type="submit">Get New Code</button>
+</form> -->
     <!-- user-information-area-start -->
     <div class="user-information-area">
         <div class="container">
@@ -339,27 +402,27 @@ $( document ).ready(function() {
                         <h2 class="fp-title">USER INFORMATION</h2>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-								<form action="#" id="registrationformAdd">
+								<form action="#" id="emailform" name="emailform">
                                 <div class="user-information-content">
                                     <div class="uic-user-name">
                                         <label>First Name<i class="fa fa-user"></i></label>
-                                        <input type="text" placeholder="First Name" required="">
+                                        <input type="text" name="fname" placeholder="First Name" required="">
                                     </div>
                                     <div class="uic-user-name">
                                         <label>Last Name<i class="fa fa-user"></i></label>
-                                        <input type="text" placeholder="Last Name" required="">
+                                        <input type="text"  name="lname" placeholder="Last Name" required="">
                                     </div>
                                     <div class="uic-user-name">
                                         <label>User Name<i class="fa fa-user"></i></label>
-                                        <input type="text" placeholder="User Name" required="">
+                                        <input type="text"  name="ssoid" placeholder="User Name" required="">
                                     </div>
                                     <div class="uic-email">
                                         <label>Email Address<i class="fa fa-envelope"></i></label>
-                                        <input type="email" placeholder="Email" required="">
+                                        <input type="email"  name="email" placeholder="Email" required="">
                                     </div>
                                     <div class="uic-password">
                                         <label>Password<i class="fa fa-key"></i></label>
-                                        <input class="type_password" type="password" placeholder="Password">
+                                        <input class="type_password" type="password"  name="password" placeholder="Password">
                                         <span class="show-pass">SHOW</span>
                                     </div>
                                 </div>
