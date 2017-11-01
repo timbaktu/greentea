@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="en">
+  <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false" %> 
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <html lang="en">
 
 <head>
     <!--- Basic Page Needs  -->
@@ -46,8 +46,8 @@
 	    </script>
 	<script type="text/javascript" src="js/wtf/views/exercisePlanView.js"></script>        
         		<link href="<c:url value='/static/css/bootstrap.css' />"  rel="stylesheet"></link>
-		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
+<%-- 		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+ --%>		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
         
         
 </head>
@@ -389,7 +389,7 @@ $( document ).ready(function() {
                     </div>
                     <div class="col-md-2">
                         <div class="top-search">
-                            <form action="#">
+                            <form action="search.html">
                                 <span id="search_icon" class="search-icon"><i class="fa fa-search"></i></span>
                                 <button class="search-text">SEARCH</button>
                                 <input id="search_box" class="search-box" type="text" required="" placeholder="Search Here">
@@ -608,10 +608,10 @@ $( document ).ready(function() {
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="single-expert">
                         <div class="se-img">
-                            <img src="img/expert-team/expert1.jpg" alt="">
+                            <img src="img/expert-team/rsz_2peter.jpg" alt="">
                         </div>
                         <div class="se-content">
-                            <h4>Kiwhi Leonard</h4>
+                            <h4>Peter McMahon</h4>
                             <p>Fitness Instructor</p>
                         </div>
                         <ul class="expert-social">
@@ -698,7 +698,7 @@ $( document ).ready(function() {
                         <div class="su-content">
                             <h4>Lean Mode</h4>
                             <p>The Lean program is designed to lower body fat, while maintain your muscle mass.</p>
-                            <a href="#">Read more</a>
+                            <a href="pricing-table.html">Read more</a>
                         </div>
                     </div>
                 </div>
@@ -710,7 +710,7 @@ $( document ).ready(function() {
                         <div class="su-content">
                             <h4>Maintain Mode</h4>
                             <p>The Maintain program should be used as a transitional period from either taking a break from your main program, or to transition to another program.</p>
-                            <a href="#">Read more</a>
+                            <a href="pricing-table.html">Read more</a>
                         </div>
                     </div>
                 </div>
@@ -722,7 +722,7 @@ $( document ).ready(function() {
                         <div class="su-content">
                             <h4>Enhance Mode</h4>
                             <p>The Enhance program will increase your muscle mass to create a more ideal physique.</p>
-                            <a href="#">Read more</a>
+                            <a href="pricing-table.html">Read more</a>
                         </div>
                     </div>
                 </div>
