@@ -33,7 +33,6 @@
 		},
 		
 		render:function(){
-			debugger;
 			var id = "ep_";
 			var count = 1;
 		    this.collection.each(function(log) {

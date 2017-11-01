@@ -105,6 +105,7 @@
 		
 	    //$("a").trigger("click");
 	    $("#confirm_plan").click(function() {
+	    	debugger;
 	        // Check if user if logged in
 	        // Yes, show logged in users plan schedule 
 	        // No , show registration page
@@ -118,20 +119,32 @@
 	            	$('#header_loggedin').show();
 	            	
 	            	$('#logged_in').text(data.username);
+	            	
+	            	
 	    			if(data.userId > 0) {
-	    				// This call is used to check if user already has a plan
-	    				$.get("userplan/"+data.userId , function(userplan, status){
-	    					// Assumption here FOR NOW is that user will have ONLY one plan
-	    					var userPlan = userplan[0].plan_id;
-	    					// userPlan = 0 means no plan selected
-	    					if(userPlan == 0) {
-	    						window.location.href='registration.html?selectedstartdate=' + selectedStartDate; 
-	    					}
-	    					else {
-	    						window.location.href='exercise-plan.html?userid=' + userplan.user_id;
-	    					}
-	    						
-	    				});
+
+	    				
+		            	// User is not anonymous, means user is already logged in 
+		            	// and has selected plan and start date, 
+		            	// SAVE MAPPING NOW
+		            	var selectedPlanId = getVal('planid');
+		            	var mappingData = '{"user_id": "' + data.userId + '","plan_id":"' + selectedPlanId + '","start_date":"' + selectedStartDate + '"}';
+			            $.ajax({      
+			                url: "selectuserplan",
+			                type: "POST",
+			                data: mappingData,
+			                Accept : "application/json",
+			                contentType: "application/json", 
+			                dataType: "json",
+			                async: false,
+		                    success: function(resultData) {
+								alert('User Plan Mapping successful..');
+								// mapping done, open schedule
+								//window.location.href='exercise-plan.html?userid=' + userplan.user_id;
+		                    },
+
+			              });
+			            window.location.href='exercise-plan.html?userid=' + data.userId;
 	    			}
 	            }
 	         // User is NOT logged in

@@ -59,7 +59,6 @@ function getVal(str) {
 }
 	
 $( document ).ready(function() {
-	debugger;
 
 	// initaially, user is consideres as not logged in 
 	$('#header_loggedin').hide();
@@ -79,7 +78,7 @@ $( document ).ready(function() {
 					var userPlan = userplan[0].plan_id;
 					// userPlan = 0 means no plan selected
 					if(userPlan == 0) {
-						window.location.href='pricing-table.html';
+						//window.location.href='pricing-table.html';
 					}
 					else {
 						//window.location.href='exercise-plan.html?userid=' + userplan[0].user_id;

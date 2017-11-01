@@ -56,7 +56,64 @@
 	
 $( document ).ready(function() {
 	 $("#header_top").load("login-header1.jsp"); 
+	 $("a").trigger("click");
+	 
+	 var isUserLoggedIn = false;
+	 var loggedInUserId = 0;
+	 $.get("loggedinuser1/", function(data, status){
+	     debugger;
+	     // User has credentials
+	     if(data.username != 'anonymousUser') {
+	    	 
+			if(data.userId > 0) {
+				// This call is used to check if user already has a plan
+				$.get("userplan/"+data.userId , function(userplan, status){
+					// Assumption here FOR NOW is that user will have ONLY one plan
+					var userPlan = userplan[0].plan_id;
+					// userPlan = 0 means no plan selected
+					if(userPlan == 0) {
+						$("#selectplanbutton").text('SELECT MY PLAN');
+					}
+					else {
+						$("#selectplanbutton").text('SHOW MY SCHEDULE');
+					}
+						
+				});
+				
+			}
+	    	 
+	    	 isUserLoggedIn =true;
+	    	 loggedInUserId = data.userId;
+	     }
+	     else {
+	    	 $("#selectplanbutton").text('SELECT MY PLAN');
+	     }
+	 });
+	 
+  	$(document).on("click", "a#selectplanbutton", function(){
+ 		if(isUserLoggedIn) {
+			if(loggedInUserId > 0) {
+				// This call is used to check if user already has a plan
+				$.get("userplan/"+loggedInUserId , function(userplan, status){
+					// Assumption here FOR NOW is that user will have ONLY one plan
+					var userPlan = userplan[0].plan_id;
+					// userPlan = 0 means no plan selected
+					if(userPlan == 0) {
+						window.location.href='pricing-table.html';
+					}
+					else {
+						window.location.href='exercise-plan.html?userid=' + userplan[0].user_id;
+					}
+						
+				});
+				
+			}
 
+ 		}
+ 		else {
+ 			window.location.href='pricing-table.html';
+ 		}
+	}); 
 });
 
 </script>
@@ -225,7 +282,7 @@ $( document ).ready(function() {
                     <div class="hero-content">
                         <h1 class="hc-header">Online Personal Training</h1>
                         <p class="hc-text">Maximum Results in Minimum Time, no matter your location</p>
-                        <a class="hc-link" href="pricing-table.html">SELECT MY PLAN</a>
+                        <a class="hc-link" id="selectplanbutton">SELECT MY PLAN</a>
                     </div>
                 </div>
             </div>
