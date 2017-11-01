@@ -43,46 +43,16 @@
 	<script	    src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" >   </script>
 	<script	    src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" >	    </script>
 	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.0/handlebars.js'></script>
- 
- <script type="text/javascript" src="js/wtf/views/registration.js"></script>
- 
-<!--<script type="text/javascript" src="js/wtf/views/schedule.js"></script>-->  
-
-<!-- 
-     <script id="schedule_template" type="text/x-handlebars-template">
-  {{#each models}}
-                            <div class="event-item">
-                                <div class="col-md-3">
-                                    <div class="item-img">
-                                        <img src="{{attributes.img_name}}" alt="event thumbnail" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <h1>{{attributes.name}}</h1>
-                                        <p class="event-date">October 8 2018 08:00 - 18:00 | 1 day</p>
-                                        <p class="desc">{{attributes.description}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="quick-buy row">
-                                        <h1>${{attributes.cost}}.00</h1>
-                                        <div class="buy-ticket">
-                                            <a href="{{attributes.buyurl}}" target="_blank" class="buy">QUICK BUY</a>
-                                            <a href="{{attributes.url}}" target="_blank">View more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-  {{/each}}    
-
-	 </script> 
- -->
 
 
 	<script type="text/javascript">
-	
+		
+		function getVal(str) {
+		    var v = window.location.search.match(new RegExp('(?:[\?\&]'+str+'=)([^&]+)'));
+		    return v ? v[1] : null;
+		}
 		$(document).ready(function(){
+			$("#header_top").load("login-header.jsp");
 			
 			var selectedUserPlanId = getVal('userid');
 			
@@ -296,118 +266,7 @@
     <div id="preloader"></div>
     <!-- header-start -->
     <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="header-top-left">
-                            <ul>
-								<li><a href="https://www.instagram.com/wethinkfitness/" target="_blank"><i class="fa fa-instagram"></i></a></li>
-								<li><a href="https://www.facebook.com/wethinkfitness/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="https://twitter.com/wethinkfitness" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="header-top-right">
-                            <!-- 
-                            <div class="single-htr">
-                                <i class="fa fa-shopping-basket"></i>
-                                <span>0 iteam - 00$</span>
-                            </div>
-                             -->
-                            <div class="single-htr">
-                                <i class="fa fa-key"></i>
-                                <span id="sign_in">Sign in</span>
-                                <div id="sign_in_form" class="signin-form-area">
-                                    <div class="signin-form-area-top">
-                                        <h3>We Think <span class="h-light">Fitness</span></h3>
-                                        <h6>BE FIT BE HAPPY</h6>
-                                        <div class="signin-form">
-                                            <form action="#">
-                                                <div class="signin-inputs">
-                                                    <div class="input-email">
-                                                        <input class="femail" type="text" placeholder="Email" required="">
-                                                    </div>
-                                                    <div class="input-password">
-                                                        <input class="fpass type_password" type="password" placeholder="Password" required="">
-                                                        <span class="show-pass">Show</span>
-                                                    </div>
-                                                </div>
-                                                <div class="remember-recover clearfix">
-                                                    <div class="remember">
-                                                        <input type="checkbox">
-                                                        <span>Remember me</span>
-                                                    </div>
-                                                    <div class="recover">
-                                                        <a href="#">Recover password</a>
-                                                    </div>
-                                                </div>
-                                                <button class="sign-in-btn hover-bs">SIGN IN</button>
-                                                <div class="signin-or">
-                                                    <span>OR</span>
-                                                </div>
-                                            </form>
-                                            <button class="reg-by-fb-btn hover-bs">REGISTER WITH FACEBOOK</button>
-                                        </div>
-                                    </div>
-                                    <div class="reg-account">
-                                        <p>Don’t have an account?<a href="#">Register</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-htr">
-                                <i class="fa fa-user-times"></i>
-                                <span id="top_reg">Register</span>
-                                <div class="register-form-area" id="top_reg_form">
-                                    <div class="rf-head">
-                                        <span class="rfa-close" id="rfa_close"><i class="fa fa-times"></i></span>
-                                        <img src="img/logo-reg.png" alt="">
-                                        <p>Join a community of over 4000 people</p>
-                                    </div>
-                                    <div class="rf-body clearfix">
-                                        <div class="rf-body-or-area">
-                                            <span>or</span>
-                                        </div>
-                                        <div class="rf-body-left" id="registrationformAdd">
-                                            <form action="#">
-                                                <div class="rf-inputs-area">
-                                                    <div class="rf-input-email rf-inputs">
-                                                        <input class="rf-email" type="email" placeholder="Email" required="">
-                                                    </div>
-                                                    <div class="rf-input-name rf-inputs">
-                                                        <input class="rf-name" type="text" placeholder="First name" required="">
-                                                    </div>
-                                                    <div class="rf-input-name rf-inputs">
-                                                        <input class="rf-name" type="text" placeholder="Last name" required="">
-                                                    </div>                                                     
-                                                    <div class="rf-input-username rf-inputs">
-                                                        <input class="rf-username" type="text" placeholder="Username" required="">
-                                                    </div>
-                                                    <div class="rf-input-password rf-inputs">
-                                                        <input class="rf-password type_password" type="password" placeholder="Password" required="">
-                                                        <span class="show-pass">Show</span>
-                                                    </div>
-                                                </div>
-                                                <div class="rf-checkbox-area">
-                                                    <input type="checkbox">
-                                                    <p>Sign me up for occasional newslettes and special offers</p>
-                                                </div>
-                                                <button class="register-btn hover-bs" type="submit" id="register">REGISTER</button>
-                                            </form>
-                                        </div>
-                                        <div class="rf-body-right">
-                                            <button class="reg-by-fb-btn hover-bs">REGISTER WITH FACEBOOK</button>
-                                            <p>We wont post to Facebook withour your permission</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div id="header_top"></div>
         <div class="menu-area hidden-sm hidden-xs">
             <div class="container">
                 <div class="row">
