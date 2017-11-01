@@ -129,6 +129,7 @@ $( document ).ready(function() {
                     success: function(resultData) {
 						alert('Registration successful..');
                          //do stuff
+						location.reload();
                     },
 
               });
