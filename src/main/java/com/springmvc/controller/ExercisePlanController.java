@@ -57,6 +57,16 @@ public class ExercisePlanController {
         }
         return new ResponseEntity<List<ExercisePlan>>(exerciseplan, HttpStatus.OK);
     }
+
+    
+    @RequestMapping(value = "/exerciseplan/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ExercisePlan>> listExercisePlan(@PathVariable("id") int id) {
+        List<ExercisePlan> exerciseplan = service.findExercisePlan(id);
+        if(exerciseplan.isEmpty()){
+            return new ResponseEntity<List<ExercisePlan>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<ExercisePlan>>(exerciseplan, HttpStatus.OK);
+    }
     
     @RequestMapping(value = "/plandetail/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<PlanDetailBean>> listPlanDetail(@PathVariable("id") int id) {

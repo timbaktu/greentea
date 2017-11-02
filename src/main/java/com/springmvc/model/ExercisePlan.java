@@ -37,6 +37,10 @@ public class ExercisePlan {
 	@Column(name = "Number_of_days", nullable = false)
 	private int no_of_days;
 	
+	@NotNull
+	@Digits(integer=8, fraction=2)
+	@Column(name = "days_per_week", nullable = false)
+	private int days_per_week;	
 
 	public int getId() {
 		return id;
@@ -78,11 +82,21 @@ public class ExercisePlan {
 	public void setno_of_days(int no_of_days) {
 		this.no_of_days = no_of_days;
 	}
+	
+	
+
+	public int getDays_per_week() {
+		return days_per_week;
+	}
+
+	public void setDays_per_week(int days_per_week) {
+		this.days_per_week = days_per_week;
+	}
 
 	@Override
 	public String toString() {
 		return "ExercisePlan [id=" + id + ", img_name=" + img_name + ", name=" + name + ", description="
-				+ description + ", no_of_days=" + no_of_days + "]";
+				+ description + ", no_of_days=" + no_of_days + ", days_per_week=" + days_per_week + "]";
 	}
 	
 	

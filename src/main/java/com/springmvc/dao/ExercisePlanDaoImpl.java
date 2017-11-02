@@ -18,6 +18,11 @@ public class ExercisePlanDaoImpl extends AbstractDao<Integer, ExercisePlan> impl
 		Criteria criteria = createEntityCriteria();
 		return (List<ExercisePlan>) criteria.list();
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public List<ExercisePlan> findExercisePlan(int id) {
+		Criteria criteria = createEntityCriteria().add(Restrictions.eq("id", id));;
+		return (List<ExercisePlan>) criteria.list();
+	}
 	
 }

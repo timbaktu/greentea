@@ -21,6 +21,9 @@ public class ExercisePlanServiceImpl implements ExercisePlanService {
 		return dao.findAllExercisePlan();
 	}
 
+	public List<ExercisePlan> findExercisePlan(int id) {
+		return dao.findExercisePlan(id);
+	}
 
 	
 }

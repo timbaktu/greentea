@@ -1,4 +1,4 @@
-  <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %> 
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <html lang="en">
@@ -46,8 +46,8 @@
 	    </script>
 	<script type="text/javascript" src="js/wtf/views/exercisePlanView.js"></script>        
         		<link href="<c:url value='/static/css/bootstrap.css' />"  rel="stylesheet"></link>
-<%-- 		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
- --%>		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
+ 		<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+ 		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
         
         
 </head>
@@ -720,7 +720,7 @@ $( document ).ready(function() {
     <!-- pricing-plan-area-end -->
 
     <!-- our-events-area-start -->
-    <div class="our-events-area">
+    <div class="our-events-area"  style="background:#f4f4f4">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -831,7 +831,7 @@ $( document ).ready(function() {
     -->
     <!-- success-story-end -->
     <!-- latest-news-area-start -->
-    <div class="latest-news-area">
+    <div class="latest-news-area"  style="background:#fff">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
