@@ -155,6 +155,14 @@
 	        });
 	    }); 
 	    
+	    var planid = getVal('planid');
+    	$.get("exerciseplan/" + planid, function(data, status){
+        	debugger;
+    		$("#plan_days").text(data[0].no_of_days);
+        	$("#plan_name").text(data[0].name);
+        	$("#plan_days_per_week").text(data[0].days_per_week);
+        });
+	    
 	});
 </script>
 
@@ -357,15 +365,15 @@
                                           <div class="img-bottom">
                                             <div class="ib-item">
                                                 <h5>DAYS</h5>
-                                                <h1>15</h1>
+                                                <h1 id=plan_days>15</h1>
                                             </div>
                                             <div class="ib-item">
                                                 <h5>MODE</h5>
-                                                <h1>LEAN</h1>
+                                                <h1 id=plan_name>LEAN</h1>
                                             </div>
                                             <div class="ib-item">
                                                 <h5>PER WEEK</h5>
-                                                <h1>4 DAYS</h1>
+                                                <h1 id=plan_days_per_week>4 DAYS</h1>
                                             </div>
                                         </div>
                                     </div>
