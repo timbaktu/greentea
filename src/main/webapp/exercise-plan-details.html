@@ -97,14 +97,19 @@
             </div>
         </div>
   {{/each}}    
-
+    								<div class="pic-submit">
+    									<!-- <input id="confirm_plan" onclick="window.location.href='exercise-plan.html'" class="hover-bs" type="submit" value="CONFIRM PLAN"> -->
+                                        <input id="start_workout" class="hover-bs" type="submit" value="START WORKOUT">
+                                    </div>  
 	 </script>               
 </head>
 <script type="text/javascript">
 	
 $( document ).ready(function() {
 	 $("#header_top").load("login-header.jsp"); 
-
+	 $("#start_workout").click(function() {
+		 window.location.href='start-exercise.html'; 
+	 });
 });
 
 </script>
@@ -325,9 +330,11 @@ $( document ).ready(function() {
 </div>
 </div>
 <div class="work-plan-sec">
+
     <div class="work-plan">
-      
+
         <p class="title">HIPT WORKOUT A</p>
+
         
         <div id="exerciseplandetail">
         
