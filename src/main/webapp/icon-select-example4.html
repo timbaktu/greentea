@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Icon/Image Select: Horizontal Example (Javascript)</title>
+
+        <link rel="stylesheet" type="text/css" href="css/lib/control/iconselect.css" >
+        <script type="text/javascript" src="lib/control/iconselect.js"></script>
+        
+        <script type="text/javascript" src="lib/iscroll.js"></script>
+        
+        <script>
+            
+        var iconSelect;
+
+        window.onload = function(){
+
+            iconSelect = new IconSelect("my-icon-select", 
+                {'selectedIconWidth':48,
+                'selectedIconHeight':48,
+                'selectedBoxPadding':5,
+                'iconsWidth':48,
+                'iconsHeight':48,
+                'boxIconSpace':3,
+                'vectoralIconNumber':3,
+                'horizontalIconNumber':1});
+
+            var icons = [];
+            icons.push({'iconFilePath':'images/icons/1.png', 'iconValue':'1'});
+            icons.push({'iconFilePath':'images/icons/2.png', 'iconValue':'2'});
+            icons.push({'iconFilePath':'images/icons/3.png', 'iconValue':'3'});
+
+            
+            iconSelect.refresh(icons);
+
+        };
+            
+        </script>
+        
+    </head>
+    <body>
+        
+        <h2>Icon/Image Select: Horizontal Example (Javascript)</h2>
+        
+        <div style="position:absolute; left:50px; top:40px;" id="my-icon-select">ddd</div>
+        
+    </body>
+    
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-103037713-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</html>

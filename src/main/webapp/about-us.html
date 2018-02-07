@@ -4,7 +4,7 @@
 <head>
     <!--- Basic Page Needs  -->
     <meta charset="utf-8">
-    <title>Fitness Trainer || About Us</title>
+    <title>We Think Fitness || About Us</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
@@ -29,135 +29,38 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
             <![endif]-->
+            
+            <script	    src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">	    </script>
 </head>
+<script type="text/javascript">
+	
+$( document ).ready(function() {
+	 $("#header_top").load("login-header.jsp"); 
 
+});
+
+</script>
 <body data-spy="scroll" data-target="#scroll-menu" data-offset="100">
     <!-- preloader -->
     <div id="preloader"></div>
     <!-- header-start -->
     <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="header-top-left">
-                            <ul>
-                                <li><a href="#" target="_blank"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="header-top-right">
-                            <div class="single-htr">
-                                <i class="fa fa-shopping-basket"></i>
-                                <span>0 iteam - 00$</span>
-                            </div>
-                            <div class="single-htr">
-                                <i class="fa fa-key"></i>
-                                <span id="sign_in">Sign in</span>
-                                <div id="sign_in_form" class="signin-form-area">
-                                    <div class="signin-form-area-top">
-                                        <h3>Fitness <span class="h-light">Trainer</span></h3>
-                                        <h6>BEST FITNESS CLUB</h6>
-                                        <div class="signin-form">
-                                            <form action="#">
-                                                <div class="signin-inputs">
-                                                    <div class="input-email">
-                                                        <input class="femail" type="text" placeholder="Email" required="">
-                                                    </div>
-                                                    <div class="input-password">
-                                                        <input class="fpass type_password" type="password" placeholder="Password" required="">
-                                                        <span class="show-pass">Show</span>
-                                                    </div>
-                                                </div>
-                                                <div class="remember-recover clearfix">
-                                                    <div class="remember">
-                                                        <input type="checkbox">
-                                                        <span>Remember me</span>
-                                                    </div>
-                                                    <div class="recover">
-                                                        <a href="#">Recover password</a>
-                                                    </div>
-                                                </div>
-                                                <button class="sign-in-btn hover-bs">SIGN IN</button>
-                                                <div class="signin-or">
-                                                    <span>OR</span>
-                                                </div>
-                                            </form>
-                                            <button class="reg-by-fb-btn hover-bs">REGISTER WITH FACEBOOK</button>
-                                        </div>
-                                    </div>
-                                    <div class="reg-account">
-                                        <p>Don’t have an account?<a href="#">Register</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-htr">
-                                <i class="fa fa-user-times"></i>
-                                <span id="top_reg">Register</span>
-                                <div class="register-form-area" id="top_reg_form">
-                                    <div class="rf-head">
-                                        <span class="rfa-close" id="rfa_close"><i class="fa fa-times"></i></span>
-                                        <img src="img/logo-reg.png" alt="">
-                                        <p>Join a community of over 4000 people</p>
-                                    </div>
-                                    <div class="rf-body clearfix">
-                                        <div class="rf-body-or-area">
-                                            <span>or</span>
-                                        </div>
-                                        <div class="rf-body-left">
-                                            <form action="#">
-                                                <div class="rf-inputs-area">
-                                                    <div class="rf-input-email rf-inputs">
-                                                        <input class="rf-email" type="email" placeholder="Email" required="">
-                                                    </div>
-                                                    <div class="rf-input-name rf-inputs">
-                                                        <input class="rf-name" type="text" placeholder="First name" required="">
-                                                    </div>
-                                                    <div class="rf-input-username rf-inputs">
-                                                        <input class="rf-username" type="text" placeholder="Username" required="">
-                                                    </div>
-                                                    <div class="rf-input-password rf-inputs">
-                                                        <input class="rf-password type_password" type="password" placeholder="Password" required="">
-                                                        <span class="show-pass">Show</span>
-                                                    </div>
-                                                </div>
-                                                <div class="rf-checkbox-area">
-                                                    <input type="checkbox">
-                                                    <p>Sign me up for occasional newslettes and special offers</p>
-                                                </div>
-                                                <button class="register-btn hover-bs">REGISTER</button>
-                                            </form>
-                                        </div>
-                                        <div class="rf-body-right">
-                                            <button class="reg-by-fb-btn hover-bs">REGISTER WITH FACEBOOK</button>
-                                            <p>We wont post to Facebook withour your permission</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div id="header_top"></div>
         <div class="menu-area hidden-sm hidden-xs">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="index.jsp"><img src="img/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="menu">
                             <nav>
                                 <ul>
-                                    <li><a href="index.html">HOME</a></li>
+                                    <li><a href="index.jsp">HOME</a></li>
                                     <li><a href="about-us.html">ABOUT US</a>
+                                        <!-- 
                                         <ul class="singel-dropdown">
                                             <li><a href="#">Dropdown Demo</a></li>
                                             <li><a href="#">Dropdown Demo</a></li>
@@ -174,26 +77,27 @@
                                                 </ul>
                                             </li>
                                         </ul>
+                                        -->
                                     </li>
-                                    <li><a href="success-story.html">SUCCESS STORY</a></li>
+                                    <!-- <li><a href="success-story.html">SUCCESS STORY</a></li> -->
                                     <li><a href="event.html">EVENT</a></li>
-                                    <li><a href="blog.html">BLOG</a></li>
-                                    <li><a href="shop.html">SHOP</a></li>
+                                    <li><a href="blog.html">FITNESS NEWS</a></li>
+                                    
                                     <li><a href="contact.html">CONTACT</a>
                                     </li>
-                                    <li><a href="index.html">PAGES</a>
+                                    <li><a href="index.jsp">PAGES</a>
                                         <div class="single-megamenu">
                                             <span>
-                                                <a href="index.html">Home</a>
+                                                <a href="index.jsp">Home</a>
                                                 <a href="about-us.html">About Us</a>
-                                                <a href="blog.html">Blog</a>
+                                                <a href="blog.html">Fitness News</a>
                                                 <a href="blog-details.html">Blog Details</a>
                                                 <a href="event.html">Event</a>
                                                 <a href="event-details.html">Event Details</a>
                                                 <a href="pricing-table.html">Pricing Table</a>
                                             </span>
                                             <span>
-                                                <a href="shop.html">Shop</a>
+                                                
                                                 <a href="product-single-page.html">Product Single</a>
                                                 <a href="success-story.html">Success Story</a>
                                                 <a href="success-story-details.html">Success Story Details</a>
@@ -233,7 +137,7 @@
                         <div class="mobile_menu">
                             <nav id="mobile_menu_active">
                                 <ul>
-                                    <li><a href="index.html">HOME</a></li>
+                                    <li><a href="index.jsp">HOME</a></li>
                                     <li><a href="about-us.html">ABOUT US</a>
                                         <ul>
                                             <li><a href="#">Dropdown Demo</a></li>
@@ -252,22 +156,22 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="success-story.html">SUCCESS STORY</a></li>
+                                    <!-- <li><a href="success-story.html">SUCCESS STORY</a></li> -->
                                     <li><a href="event.html">EVENT</a></li>
-                                    <li><a href="blog.html">BLOG</a></li>
-                                    <li><a href="shop.html">SHOP</a></li>
+                                    <li><a href="blog.html">FITNESS NEWS</a></li>
+                                    
                                     <li><a href="contact.html">CONTACT</a>
                                     </li>
-                                    <li><a href="index.html">PAGES</a>
+                                    <li><a href="index.jsp">PAGES</a>
                                         <ul>
-                                            <a href="index.html">Home</a>
+                                            <a href="index.jsp">Home</a>
                                             <a href="about-us.html">About Us</a>
-                                            <a href="blog.html">Blog</a>
+                                            <a href="blog.html">Fitness News</a>
                                             <a href="blog-details.html">Blog Details</a>
                                             <a href="event.html">Event</a>
                                             <a href="event-details.html">Event Details</a>
                                             <a href="pricing-table.html">Pricing Table</a>
-                                            <a href="shop.html">Shop</a>
+                                            
                                             <a href="product-single-page.html">Product Single</a>
                                             <a href="success-story.html">Success Story</a>
                                             <a href="success-story-details.html">Success Story Details</a>
@@ -291,14 +195,14 @@
     </header>
     <!-- header-end -->
     <!-- hero-section-start -->
-    <div class="hero-section" id="home">
+  <!--   <div class="hero-section" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="hero-content">
                         <h1 class="hc-header">Online Personal Training</h1>
                         <p class="hc-text">Maximum Results in Minimum Time, no matter your location</p>
-                        <a class="hc-link" href="#">SELECT YOUR PLAN</a>
+                        <a class="hc-link" href="#">SELECT MY PLAN</a>
                     </div>
                 </div>
             </div>
@@ -306,38 +210,39 @@
                 <nav>
                     <ul class="crumb">
                         <li><a class="crumb-home" href="#"><i class="fa fa-home"></i></a></li>
-                        <li><a href="index.html">Home<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="index.jsp">Home<i class="fa fa-angle-right"></i></a></li>
                         <li><a class="active" href="about-us.html">About Us</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- hero-section-end -->
     <!--location-section start-->
     <div class="location-section">
         <div class="container">
             <div class="location">
-                <img src="img/gmap.png" alt="" class="gmap" />
+                <img src="" alt="" class="" />
                 <div class="location-text">
-                    <h1>11 Locations, 8 Countries, 4 Countinents</h1>
-                    <p>Powered by a transformative business model, propretary techonology, tried and tested methodology, and some of the best fitness industry branins in the world. we,ve rewritten the rules and changed the game.</p>
+                    <h1>Who We Are</h1>
+                    <p>Welcome to wethinkfitness -- a fitness portal designed to help you with customized fitness and diet plan. We believe that there is no single workout and diet plan that fits all. At wethinkfitness, you can create your own customized workout and diet plan based on your needs. We also have a group of talented experts who can help you reach your goal. Unlike gym memberships and other generic/fad programs that have failed you in the past, our results-based training focuses on your personal wants and needs, in a fun, social and family style atmosphere which you can do at home.</p>
+                    <p>Click around and you will find a variety of fitness and diet plans and information. There are fitness programs that can help you get a clearer picture of where you stand and where you're headed. There is a blog and newsletter articles on a wide range of fitness topics. You can even connect to one of our expert via one to one emails, chats and get more information. And check back often, because we're constantly adding new material. If you have a specific question or want more information, click on Contact Us, drop us an e-mail message at support@wethinkfitness.com, or call us at 000-000-0000. We're ready to help.</p>
                 </div>
-                <div class="g-pin"></div>
+               <!-- <div class="g-pin"></div> -->
             </div>
             <div class="row">
                 <div class="facts">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="facts-left">
                             <div class="row">
-                                <h1 class="fact-title">Facts</h1>
+                                <h1 class="fact-title">Fitness Facts</h1>
                                 <div class="fact-lbs">
-                                    <h1>141'702 lbs</h1>
-                                    <p>Fitness Club Client's Fat Lost to Date</p>
+                                    <h1>Best Workout</h1>
+                                    <p>Get variety of options for performing best workout with app trainer</p>
                                 </div>
                                 <div class="fact-lbs">
-                                    <h1>141'702 lbs</h1>
-                                    <p>Fitness Club Client's Muscle Gained to Date</p>
+                                    <h1>Best Meal</h1>
+                                    <p>Get best meal recipes to make it</p>
                                 </div>
                             </div>
                         </div>
@@ -354,61 +259,14 @@
         </div>
     </div>
     <!--location-section end-->
-    <!--Client Feedback section start-->
-    <div class="feedback-section fix bg-gray">
-        <div class="container">
-            <div class="owl-carousel" id="owl-demo1">
-                <div class="feadback-item">
-                    <div class="col-md-4 col-sm-4" col-md-4 col-xs-12>
-                        <div class="client-image">
-                            <img src="img/client/client_image.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                        <div class="client-feadback">
-                            <p class="p-title">JONT HENRY - CEO B&C</p>
-                            <h3>“ Tempor malesuada at id nisi. Etiam nec ia massa. Nullam <span>quis ultrices</span> felis. Bitur dum at diam id finibus. Quisque finibus laoreet nibh, at ultrieces risus"</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="feadback-item">
-                    <div class="col-md-4 col-sm-4" col-md-4 col-xs-12>
-                        <div class="client-image">
-                            <img src="img/client/client_image.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                        <div class="client-feadback">
-                            <p class="p-title">JONT HENRY - CEO B&C</p>
-                            <h3>“ Tempor malesuada at id nisi. Etiam nec ia massa. Nullam <span>quis ultrices</span> felis. Bitur dum at diam id finibus. Quisque finibus laoreet nibh, at ultrieces risus"</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="feadback-item">
-                    <div class="col-md-4 col-sm-4" col-md-4 col-xs-12>
-                        <div class="client-image">
-                            <img src="img/client/client_image.jpg" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-sm-8 col-xs-12">
-                        <div class="client-feadback">
-                            <p class="p-title">JONT HENRY - CEO B&C</p>
-                            <h3>“ Tempor malesuada at id nisi. Etiam nec ia massa. Nullam <span>quis ultrices</span> felis. Bitur dum at diam id finibus. Quisque finibus laoreet nibh, at ultrieces risus"</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Client Feedback section end-->
-    <!--Facilities section start-->
+    <!--Facilities section start
     <div class="facilities-section">
         <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="facilities-left">
                     <div class="row">
-                        <h1>Our Facilities</h1>
-                        <p>This is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non</p>
+                        <h1>Fitness and Recreation</h1>
+                        <p>We work hard and we workout harder. Every year we spend a month in a warm country and work together to create the best fitness app existing.</p>
                     </div>
                 </div>
             </div>
@@ -422,15 +280,74 @@
             </div>
         </div>
     </div>
-    <!--Facilities section end-->
-    <!--brand logo section start-->
+    Facilities section end-->
+    
+      <!--Client Feedback section start
+    <div class="feedback-section fix bg-gray">
+        <div class="container">
+            <div class="owl-carousel" id="owl-demo1">
+                <div class="feadback-item">               
+                    <div class="col-md-4 col-sm-4" col-md-4 col-xs-12>
+                        <div class="client-image">
+                            <img src="img/client/client_image.jpg" alt="" />
+                        </div>
+                    </div>
+                    <p><b> Our Team</b></p>
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="client-feadback">
+                            <p class="p-title">Kashif Khan CEO</p>
+                            <h3>Kashif is a motivated business person driving to do his best for the company</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="feadback-item">
+                    <div class="col-md-4 col-sm-4" col-md-4 col-xs-12>
+                        <div class="client-image">
+                            <img src="img/client/client_image.jpg" alt="" />
+                        </div>
+                    </div>                    <p><b> Our Team</b></p>
+                    
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="client-feadback">
+                            <p class="p-title">Satyajeet Nandekar CEO</p>
+                            <h3>Satya is a motivated business person driving to do his best for the company</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="feadback-item">
+                    <div class="col-md-4 col-sm-4" col-md-4 col-xs-12>
+                        <div class="client-image">
+                            <img src="img/client/client_image.jpg" alt="" />
+                        </div>
+                    </div>                    <p><b> Our Team</b></p>
+                    
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                        <div class="client-feadback">
+                            <p class="p-title">Chris CEO</p>
+                            <h3>Chris is a motivated business person driving to do his best for the company</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    Client Feedback section end-->
+    
+    <!--brand logo section start
     <div class="brand-logo-section">
         <div class="container">
             <div class="row">
                 <div class="owl-carousel" id="owl-demo2">
                     <div class="brand-logo">
                         <img src="img/brand/1.jpg" alt="brand logo" />
+                            <p class="p-title">Chris CEO</p>
+                            <p>Chris is a motivated business person driving to do his best for the company</p>
                     </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    <!--
                     <div class="brand-logo">
                         <img src="img/brand/2.jpg" alt="brand logo" />
                     </div>
@@ -450,8 +367,9 @@
             </div>
         </div>
     </div>
+    -->
     <!--brand logo section end-->
-    <!--brand logo section start-->
+    <!--brand logo section start
     <div class="instagram-logo-section">
         <div class="container">
             <div class="row">
@@ -500,6 +418,7 @@
             </div>
         </div>
     </div>
+    -->
     <!--brand logo section end-->
     <!--subscribe section start-->
     <div class="subscribe-section">
@@ -539,15 +458,15 @@
                 <div class="col-md-4 col-sm-8 col-xs-12">
                     <div class="trainer-aera">
                         <div class="ft-trainer">
-                            <h2>Fitness <span>Trainer</span></h2>
-                            <h5>BEST FITNESS CLUB</h5>
+                            <h2>We Think <span>Fitness</span></h2>
+                            <h5>BE FIT BE HAPPY</h5>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.</p>
+                        <p>We think fitness, offers variety of workout options according to individual's body type. Main motive is to be fit and be happy..</p>
                         <div class="contact-info">
                             <ul>
-                                <li><i class="fa fa-map-marker" aria-hidden="true"></i> <span class="bld">100 highland ave, california,</span> united state</li>
-                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i> contact@fitness.com</li>
-                                <li><a class="red" href=""><i class="fa fa-phone-square" aria-hidden="true"></i>www.fitnesstrainer.com</a></li>
+                                <li><i class="fa fa-map-marker" aria-hidden="true"></i> <span class="bld">5 Bracing Run, Hopkinton, MA,</span> United States</li>
+                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i> support@wethinkfitness.com</li>
+                                <li><a class="red" href=""><i class="fa fa-phone-square" aria-hidden="true"></i>www.wethinkfitness.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -556,11 +475,11 @@
                     <div class="ft-info">
                         <h2>Fitness<span> information</span></h2>
                         <ul>
-                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>about our shop</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>top Sellers</a></li>
+                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>About Us</a></li>
+                            <!-- <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>top Sellers</a></li> -->
                             <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>our blog</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>New Product</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Secure Shopping</a></li>
+                            
+                            <!-- <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Secure Shopping</a></li> --> 
                         </ul>
                     </div>
                 </div>
@@ -569,10 +488,10 @@
                         <h2>my <span> account</span></h2>
                         <ul>
                             <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>my account</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>discount</a></li>
+                            <!--<li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>discount</a></li> -->
                             <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>personal information</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>my address</a></li>
-                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>order history</a></li>
+                            
+                            <!--<li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>order history</a></li>-->
                         </ul>
                     </div>
                 </div>
@@ -599,7 +518,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6  col-xs-12">
                         <div class="sticky-fotter-text">
-                            <p>&COPY; 2017 <b>fintness</b> made with <i class="fa fa-heart" aria-hidden="true"></i> by Youwes, All right reserved</p>
+                            <p>&COPY; 2017 <b>fitness</b> made with <i class="fa fa-heart" aria-hidden="true"></i> us, All right reserved</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6  col-xs-12">
@@ -609,7 +528,7 @@
                                     <li><a href="#">contact us</a></li>
                                     <li><a href="#">term of use</a></li>
                                     <li><a href="#">site map</a></li>
-                                    <li><a href="#">pricice policy</a></li>
+                                    <!-- <li><a href="#">pricing policy</a></li> -->
                                 </ul>
                             </nav>
                         </div>
@@ -635,5 +554,16 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/theme.js"></script>
 </body>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-103037713-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 </html>

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>We Think Fitness || Exercise Plan</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Mobile Specific Meta  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="img/favicon.ico">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+            
+	<script	    src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">	    </script>
+	<script	    src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" >   </script>
+	<script	    src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" >	    </script>
+	<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.0/handlebars.js'></script>
+	<script type="text/javascript" src="js/wtf/views/planDetail.js"></script>  
+
+     <script id="plandetail_template" type="text/x-handlebars-template">
+
+
+{{#each models}}
+		
+		{{#if attributes.week}}
+
+			<p class="title" style="padding-top: 35px; text-decoration: underline;">WEEK {{attributes.week}}</p>
+
+		{{/if}}
+
+
+		{{#if attributes.week}}
+			<div class="plan-item-area week">
+		{{else}}
+			<div class="plan-item-area">
+		{{/if}}
+        
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="row">
+                    <p class="title scnd">DAY {{attributes.day}}</p>
+                    <p class="title">{{attributes.name}}</p>
+                    <p></p>
+              </div>
+            </div>
+                        
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="wplan-right">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title">{{attributes.no_of_reps}}</p>
+                        <p>Exercises</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title">{{attributes.no_of_exercise}}</p>
+                        <p>Total Reps</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title"></p>
+                        <p>{{attributes.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+  {{/each}}    
+
+	 </script>   
+            
+            
+            
+            
+</head>
+
+<script type="text/javascript">
+	function getVal(str) {
+	    var v = window.location.search.match(new RegExp('(?:[\?\&]'+str+'=)([^&]+)'));
+	    return v ? v[1] : null;
+	}
+	
+	$( document ).ready(function() {
+
+		$("#header_top").load("login-header.jsp"); 
+		
+		$('.input-group.date').datepicker({
+		    autoclose: true,
+		    todayHighlight: true
+		});
+		
+	    //$("a").trigger("click");
+	    $("#confirm_plan").click(function() {
+	    	debugger;
+	        // Check if user if logged in
+	        // Yes, show logged in users plan schedule 
+	        // No , show registration page
+	    	$.get("loggedinuser1/", function(data, status){
+            	
+            	// selected plan start date
+				var selectedStartDate = $('#start-date-picker').val(); 
+	    		// User is logged in
+	            if(data.username != 'anonymousUser') {
+	            	$('#header_loggedout').hide();
+	            	$('#header_loggedin').show();
+	            	
+	            	$('#logged_in').text(data.username);
+	            	
+	            	
+	    			if(data.userId > 0) {
+
+	    				
+		            	// User is not anonymous, means user is already logged in 
+		            	// and has selected plan and start date, 
+		            	// SAVE MAPPING NOW
+		            	var selectedPlanId = getVal('planid');
+		            	var mappingData = '{"user_id": "' + data.userId + '","plan_id":"' + selectedPlanId + '","start_date":"' + selectedStartDate + '"}';
+			            $.ajax({      
+			                url: "selectuserplan",
+			                type: "POST",
+			                data: mappingData,
+			                Accept : "application/json",
+			                contentType: "application/json", 
+			                dataType: "json",
+			                async: false,
+		                    success: function(resultData) {
+								alert('User Plan Mapping successful..');
+								// mapping done, open schedule
+								//window.location.href='exercise-plan.html?userid=' + userplan.user_id;
+		                    },
+
+			              });
+			            window.location.href='exercise-plan.html?userid=' + data.userId;
+	    			}
+	            }
+	         // User is NOT logged in
+	            else {
+	            	var planid = getVal('planid');
+	            	window.location.href='registration.html?selectedplanid=' + planid + '&selectedstartdate=' + selectedStartDate; 
+	            }
+	        });
+	    }); 
+	    
+	    var planid = getVal('planid');
+    	$.get("exerciseplan/" + planid, function(data, status){
+        	debugger;
+    		$("#plan_days").text(data[0].no_of_days);
+        	$("#plan_name").text(data[0].name);
+        	$("#plan_days_per_week").text(data[0].days_per_week);
+        });
+	    
+	});
+</script>
+
+
+<body data-spy="scroll" data-target="#scroll-menu" data-offset="100">
+    <!-- preloader -->
+    <div id="preloader"></div>
+    <!-- header-start -->
+    <header>
+		<div id="header_top"></div>
+        <div class="menu-area hidden-sm hidden-xs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="index.jsp"><img src="img/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="menu">
+                            <nav>
+                                <ul>
+                                    <li><a href="index.jsp">HOME</a></li>
+                                    <li><a href="about-us.html">ABOUT US</a>
+                                        <!-- 
+                                        <ul class="singel-dropdown">
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a>
+                                                <ul class="single-thirdlevel-menu">
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        -->
+                                    </li>
+                                    <!-- <li><a href="success-story.html">SUCCESS STORY</a></li> -->
+                                    <li><a href="event.html">EVENT</a></li>
+                                    <li><a href="blog.html">FITNESS NEWS</a></li>
+                                    
+                                    <li><a href="contact.html">CONTACT</a>
+                                    </li>
+                                    <li><a href="index.jsp">PAGES</a>
+                                        <div class="single-megamenu">
+                                            <span>
+                                                <a href="index.jsp">Home</a>
+                                                <a href="about-us.html">About Us</a>
+                                                <a href="blog.html">Fitness News</a>
+                                                <a href="blog-details.html">Blog Details</a>
+                                                <a href="event.html">Event</a>
+                                                <a href="event-details.html">Event Details</a>
+                                                <a href="pricing-table.html">Pricing Table</a>
+                                            </span>
+                                            <span>
+                                                
+                                                <a href="product-single-page.html">Product Single</a>
+                                                <a href="success-story.html">Success Story</a>
+                                                <a href="success-story-details.html">Success Story Details</a>
+                                                <a href="about-trainer.html">About Trainer</a>
+                                                <a href="contact.html">Contact</a>
+                                                <a href="my-account.html">My Account</a>
+                                            </span>
+                                            <span>
+                                                <a href="exercise-plan.html">Exercise Plan</a>
+                                                <a href="exercise-plan-details.html">Exercise Plan Details</a>
+                                                <a href="forgot-password.html">Forgot Password</a>
+                                                <a href="login.html">Login</a>
+                                                <a href="registration.html">Registration</a>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="top-search">
+                            <form action="#">
+                                <span id="search_icon" class="search-icon"><i class="fa fa-search"></i></span>
+                                <button class="search-text">SEARCH</button>
+                                <input id="search_box" class="search-box" type="text" required="" placeholder="Search Here">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-area visible-xs visible-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mobile_menu">
+                            <nav id="mobile_menu_active">
+                                <ul>
+                                    <li><a href="index.jsp">HOME</a></li>
+                                    <li><a href="about-us.html">ABOUT US</a>
+                                        <ul>
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a></li>
+                                            <li><a href="#">Dropdown Demo</a>
+                                                <ul>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                    <li><a href="#">Thirdlevel Menu Demo</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!-- <li><a href="success-story.html">SUCCESS STORY</a></li> -->
+                                    <li><a href="event.html">EVENT</a></li>
+                                    <li><a href="blog.html">FITNESS NEWS</a></li>
+                                    
+                                    <li><a href="contact.html">CONTACT</a>
+                                    </li>
+                                    <li><a href="index.jsp">PAGES</a>
+                                        <ul>
+                                            <a href="index.jsp">Home</a>
+                                            <a href="about-us.html">About Us</a>
+                                            <a href="blog.html">Fitness News</a>
+                                            <a href="blog-details.html">Blog Details</a>
+                                            <a href="event.html">Event</a>
+                                            <a href="event-details.html">Event Details</a>
+                                            <a href="pricing-table.html">Pricing Table</a>
+                                            
+                                            <a href="product-single-page.html">Product Single</a>
+                                            <a href="success-story.html">Success Story</a>
+                                            <a href="success-story-details.html">Success Story Details</a>
+                                            <a href="about-trainer.html">About Trainer</a>
+                                            <a href="contact.html">Contact</a>
+                                            <a href="my-account.html">My Account</a>
+                                            <a href="exercise-plan.html">Exercise Plan</a>
+                                            <a href="exercise-plan-details.html">Exercise Plan Details</a>
+                                            <a href="forgot-password.html">Forgot Password</a>
+                                            <a href="login.html">Login</a>
+                                            <a href="registration.html">Registration</a>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+    <!--my account section start-->
+<!--     <div class="account-banner-sec" id="home">
+        <div class="account-profile">
+            <img src="img/profile/user1.jpg" alt="user image" />
+            <h2 class="p-name">Alex Parris</h2>
+            <p class="date">Joined January 22, 2018 </p>
+        </div>
+    </div> -->
+    <!--my account section end-->
+    <!--exercise-plan start-->
+    <div class="exercise-plan-area">
+        <div class="container">
+            <div class="row">
+                 <div class="col-md-2 col-sm-2 col-xs-4 xd-12">
+                    <div class="row">
+                        <div class="acc-category">
+                            Nav tabs
+                            <ul class="nav-item-area my-account-left" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#profile" role="tab"><i class="fa fa-user-circle-o"></i>My profile</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link active" data-toggle="tab" href="#exercise" role="tab"><i class="fa fa-calendar"></i>Exercise Plan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#signup" role="tab"><i class="fa fa-sign-out"></i>Sign out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-md-10 col-sm-10 col-xs-8 xd-12">
+                    <div class="row">
+                        <div class="details-text-sec">
+                            <div class="col-xs-12">
+                                <div class="detail-text">
+                                    <h1 class="title">HIGH INTENSITY POWER TRAINING WORKOUTS FOR BETTER LEAN BODY</h1>
+                                    <p class="sub-t">Give these high-volume routines a try build better lean body.</p>
+                                    <div class="img-area">
+                                          <img src="img/exercise/exercise_plan.jpg" alt="exercise_plan" /> 
+                                          
+                                          <div class="img-bottom">
+                                            <div class="ib-item">
+                                                <h5>DAYS</h5>
+                                                <h1 id=plan_days>15</h1>
+                                            </div>
+                                            <div class="ib-item">
+                                                <h5>MODE</h5>
+                                                <h1 id=plan_name>LEAN</h1>
+                                            </div>
+                                            <div class="ib-item">
+                                                <h5>PER WEEK</h5>
+                                                <h1 id=plan_days_per_week>4 DAYS</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>There are dozens of exercises you can do on chest day. You don't want to spend a Monday afternoon—or several Mondays—trying them all. You just want to know the best exercises for building a muscular chest, no questions asked. We've done the work for you, and found the top 10</p>
+<p><span class="bld-p">SEE ALSO:</span> Perfect steps to perform workout</p>
+<p>If you want big, full, strong, "armor-plate" pecs that pop, then you want to do these chest exercises and workouts</p>
+<div class="work-plan" id="plandetail">
+</div>
+
+					<p class="title" style="padding-top: 35px; text-decoration: underline; font-size:medium; font-weight:700;">Select Start Date : </p>
+                    <div class="input-group date">
+					  <input id="start-date-picker" type="text" class="form-control input-sm"><span class="input-group-addon" style="width:0%"><i class="glyphicon glyphicon-th"></i></span>
+					</div>
+
+    								<div class="pic-submit">
+    									<!-- <input id="confirm_plan" onclick="window.location.href='exercise-plan.html'" class="hover-bs" type="submit" value="CONFIRM PLAN"> -->
+                                        <input id="confirm_plan" class="hover-bs" type="submit" value="CONFIRM PLAN">
+                                    </div>  
+                                    
+                                    <div id="dialog"></div>
+</div>
+<div class="work-plan-sec">
+
+
+       
+       <!--  
+        <div class="plan-item-area fst">
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="row">
+                    <p class="title scnd">DAY 1</p>
+                    <p class="title">Chest Area</p>
+                    <p></p>
+              </div>
+            </div>
+                        
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="wplan-right">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title">8</p>
+                        <p>Exercises</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title">200</p>
+                        <p>Total Reps</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title"></p>
+                        <p>Concentrates on light chest. Pushups, chest press etc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="plan-item-area">
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="row">
+                    <p class="title scnd">DAY 2</p>
+                    <p class="title">Bisceps Area</p>
+                    <p></p>
+             </div>
+            </div>  
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="wplan-right">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title">12</p>
+                        <p>Exercises</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title">220</p>
+                        <p>Total Reps</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title"></p>
+                        <p>Concentrates on heavy bisceps. bisceps curl, hammer etc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="plan-item-area">
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="row">
+                    <p class="title scnd">DAY 3</p>
+                    <p class="title">Shoulder Area</p>
+                    <p></p>
+            </div>
+            </div>
+                        
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="wplan-right">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title">12</p>
+                        <p>Exercises</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title">220</p>
+                        <p>Total Reps</p>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <p class="title"></p>
+                        <p>Concentrate on shoulder joints. pull ups, shoulder ups etc</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        
+<!--      <table class="table table-sm">
+  <thead>
+    <tr class="bg-primary">
+      <th>Week 1</th>
+      <th>Chest</th>
+      <th>Shoulders</th>
+      <th>Bisceps</th>
+      <th>REST</th>
+      <th>Cardio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="bg-info">
+      <th scope="row">1</th>
+            <td><a href="http://localhost:8080/GreenTea/exercise-plan-details.html"><b>8 Exercises </b><span class="glyphicon glyphicon-ok"></span></a>  </td>
+      <td></td>
+            <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="bg-success">
+      <th scope="row">2</th>
+      <td></td>
+      <td></td>
+      <td><p><span class="glyphicon glyphicon-ok"></span></p>  </td>
+<td></td>
+<td></td>
+    </tr>
+    <tr class="bg-danger">
+      <th scope="row">3</th>
+      <td><p><span class="glyphicon glyphicon-ok"></span></p>  </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr class="bg-info">
+      <th scope="row">4</th>
+      <td></td>
+      <td></td>
+      <td></td>
+            <td><p><span class="glyphicon glyphicon-ok"></span></p>  </td>
+            <td></td>
+    </tr>
+        <tr class="bg-success">
+      <th scope="row">5</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+            <td><p><b>2 miles running<span class="glyphicon glyphicon-ok"></span></b></p>  </td>
+    </tr>
+  </tbody>
+</table>    -->
+    
+   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!--exercise-plan section end-->
+    <!--subscribe section start-->
+    <div class="subscribe-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="row">
+                        <div class="ht-newsletter">
+                            <h5>JOIN OUR NEWSLETTER</h5>
+                            <h2>subscribe <b>newsletter</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-7 col-xs-12">
+                    <div class="row">
+                        <form class="form-inline newsletter-forn-in">
+                            <div class="col-md-9  col-sm-9 col-xs-12">
+                                <div class="form-group">
+                                    <input class="form-control newsletter-input" type="text" placeholder="enter your email address">
+                                </div>
+                            </div>
+                            <div class="col-md-3  col-sm-3 col-xs-12">
+                                <div class="row text-center">
+                                    <button type="submit" class="subscribe-btn">subscribe<i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--subscribe section end-->
+    <!--big footer section start-->
+    <div class="big-fotter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    <div class="trainer-aera">
+                        <div class="ft-trainer">
+                            <h2>We Think <span>Fitness</span></h2>
+                            <h5>BE FIT BE HAPPY</h5>
+                        </div>
+                        <p>We think fitness, offers variety of workout options according to individual's body type. Main motive is to be fit and be happy..</p>
+                        <div class="contact-info">
+                            <ul>
+                                <li><i class="fa fa-map-marker" aria-hidden="true"></i> <span class="bld">5 Bracing Run, Hopkinton, MA,</span> United States</li>
+                                <li><i class="fa fa-envelope-square" aria-hidden="true"></i> support@wethinkfitness.com</li>
+                                <li><a class="red" href=""><i class="fa fa-phone-square" aria-hidden="true"></i>www.wethinkfitness.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-12">
+                    <div class="ft-info">
+                        <h2>Fitness<span> information</span></h2>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>About Us</a></li>
+                            <!--<li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>top Sellers</a></li>-->
+                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>our blog</a></li>
+                            
+                            <!--<li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>Secure Shopping</a></li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-4 col-xs-12">
+                    <div class="ft-info">
+                        <h2>my <span> account</span></h2>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>my account</a></li>
+                            <!--<li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>discount</a></li> -->
+                            <li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>personal information</a></li>
+                            
+                            <!--<li><a href="#"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>order history</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="sticky-fotter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6  col-xs-12">
+                        <div class="sticky-fotter-text">
+                            <p>&COPY; 2017 <b>fitness</b> made with <i class="fa fa-heart" aria-hidden="true"></i> by us, All right reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6  col-xs-12">
+                        <div class="fotter-link">
+                            <nav>
+                                <ul class="link-list">
+                                    <li><a href="#">contact us</a></li>
+                                    <li><a href="#">term of use</a></li>
+                                    <li><a href="#">site map</a></li>
+                                    <!-- <li><a href="#">pricing policy</a></li> -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <img src="img/bg/fotterbg.png" alt="" />
+                    <a class="go-top" href="#home"><i class="fa fa-arrow-circle-o-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/jquery.meanmenu.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.scrollUp.js"></script>
+    <script src="js/jquery.mixitup.min.js"></script>
+    <script src="js/jquery.nstSlider.min.js"></script>
+    <script src="js/handleCounter.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+</body>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-103037713-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</html>
