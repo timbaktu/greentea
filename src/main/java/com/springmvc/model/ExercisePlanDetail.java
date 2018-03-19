@@ -80,7 +80,7 @@ public class ExercisePlanDetail implements java.io.Serializable{
 	@NotNull
 	@Digits(integer=8, fraction=2)
 	@Column(name = "number_of_reps", nullable = false)
-	private int no_of_reps;
+	private String no_of_reps;
 	
 	@NotNull
 	@Digits(integer=8, fraction=2)
@@ -140,11 +140,11 @@ public class ExercisePlanDetail implements java.io.Serializable{
 		return exercise.getDescription();
 	}
 
-	public int getno_of_reps() {
+	public String getno_of_reps() {
 		return no_of_reps;
 	}
 
-	public void setno_of_reps(int no_of_reps) {
+	public void setno_of_reps(String no_of_reps) {
 		this.no_of_reps = no_of_reps;
 	}
 

@@ -9,5 +9,7 @@ public interface ExercisePlanDetailService {
 
 
 	List<ExercisePlanDetail> findExerciePlanDetail(int id); 
-		
+	
+	List<ExercisePlanDetail> findNextExerice(int scheduleid,int id); 
+	
 }

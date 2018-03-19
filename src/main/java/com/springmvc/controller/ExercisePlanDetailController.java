@@ -50,4 +50,25 @@ public class ExercisePlanDetailController {
          return new ResponseEntity<List<ExercisePlanDetailBean>>(exerciseplandetailsbean, HttpStatus.OK);
 
 }
+    
+    //---------------- Sending two entries. First entry will have next exercise details. Second entry having an id will be an indicator if this is last exercise for the day and display finish button.
+    @RequestMapping(value = "/nextexercise/{schedule_id}/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ExercisePlanDetailBean>>  listNextExercise(@PathVariable("schedule_id") int scheduleid,@PathVariable("id") int id) {
+  	 List<ExercisePlanDetail> exerciseplandetails = service.findNextExerice(scheduleid,id);
+       List<ExercisePlanDetailBean> exerciseplandetailsbean  = new ArrayList<ExercisePlanDetailBean>();
+       
+       for(ExercisePlanDetail exerciseplandetail : exerciseplandetails) {
+       	ExercisePlanDetailBean exerciseplandetailbean = new ExercisePlanDetailBean();
+       	ExercisePlanDetailMapper.createExercisePlanDetailBean(exerciseplandetailbean, exerciseplandetail);
+       	exerciseplandetailsbean.add(exerciseplandetailbean);
+       }
+       
+       
+       if(exerciseplandetailsbean.isEmpty()){
+           return new ResponseEntity<List<ExercisePlanDetailBean>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
+       }
+       return new ResponseEntity<List<ExercisePlanDetailBean>>(exerciseplandetailsbean, HttpStatus.OK);
+
+}
+    
 }

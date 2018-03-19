@@ -13,7 +13,7 @@ public class ExercisePlanDetailBean implements java.io.Serializable{
 	private String video_link;
 	private String how_to;
 	private String interval;
-	private int no_of_reps;
+	private String no_of_reps;
 	private int no_of_sets;
 	private String img_name;
 	public int getId() {
@@ -58,10 +58,11 @@ public class ExercisePlanDetailBean implements java.io.Serializable{
 	public void setInterval(String interval) {
 		this.interval = interval;
 	}
-	public int getNo_of_reps() {
+	
+	public String getNo_of_reps() {
 		return no_of_reps;
 	}
-	public void setNo_of_reps(int no_of_reps) {
+	public void setNo_of_reps(String no_of_reps) {
 		this.no_of_reps = no_of_reps;
 	}
 	public int getNo_of_sets() {

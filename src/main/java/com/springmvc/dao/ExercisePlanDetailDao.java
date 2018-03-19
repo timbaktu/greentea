@@ -9,4 +9,5 @@ public interface ExercisePlanDetailDao {
 	List<ExercisePlanDetail> findExercisePlanDetail(int id);
 
 	
+	List<ExercisePlanDetail> findNextExerice(int scheduleid, int id);
 }

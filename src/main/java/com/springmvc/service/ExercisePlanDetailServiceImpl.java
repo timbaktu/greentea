@@ -24,5 +24,8 @@ public class ExercisePlanDetailServiceImpl implements ExercisePlanDetailService 
 	}
 
 
+	public List<ExercisePlanDetail> findNextExerice(int scheduleid, int id) {
+		return dao.findNextExerice(scheduleid, id);
+	}
 	
 }
