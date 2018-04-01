@@ -1,5 +1,7 @@
 package com.springmvc.bean;
 
+import java.util.List;
+
 public class ExercisePlanDetailBean implements java.io.Serializable{
 
 	/**
@@ -9,7 +11,7 @@ public class ExercisePlanDetailBean implements java.io.Serializable{
 	private int id;
 	private int schedule_id;
 	private String name;
-	private String description;
+	private List<String> description;
 	private String video_link;
 	private String how_to;
 	private String interval;
@@ -34,11 +36,11 @@ public class ExercisePlanDetailBean implements java.io.Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
+	public List<String> getDescription() {
 		return description;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(List<String> itemList) {
+		this.description = itemList;
 	}
 	public String getVideo_link() {
 		return video_link;

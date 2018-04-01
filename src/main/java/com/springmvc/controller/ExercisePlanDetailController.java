@@ -8,6 +8,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,12 +53,14 @@ public class ExercisePlanDetailController {
 
 }
     
-    //---------------- Sending two entries. First entry will have next exercise details. Second entry having an id will be an indicator if this is last exercise for the day and display finish button.
+    //---------------- Sending two entries. First entry will have current exercise details. Second entry having an id will be an indicator if this is last exercise for the day and display finish button.
     @RequestMapping(value = "/nextexercise/{schedule_id}/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ExercisePlanDetailBean>>  listNextExercise(@PathVariable("schedule_id") int scheduleid,@PathVariable("id") int id) {
-  	 List<ExercisePlanDetail> exerciseplandetails = service.findNextExerice(scheduleid,id);
+  	   
+    	   List<ExercisePlanDetail> exerciseplandetails = service.findNextExerice(scheduleid,id);
        List<ExercisePlanDetailBean> exerciseplandetailsbean  = new ArrayList<ExercisePlanDetailBean>();
-       
+       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+       String uname  = authentication.getPrincipal().toString();
        for(ExercisePlanDetail exerciseplandetail : exerciseplandetails) {
        	ExercisePlanDetailBean exerciseplandetailbean = new ExercisePlanDetailBean();
        	ExercisePlanDetailMapper.createExercisePlanDetailBean(exerciseplandetailbean, exerciseplandetail);

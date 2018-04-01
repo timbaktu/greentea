@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -21,12 +22,20 @@ public class ExercisePlanDetailDaoImpl extends AbstractDao<Integer, ExercisePlan
 		return (List<ExercisePlanDetail>) criteria.list();
 	}
 
+	public void savedetail(ExercisePlanDetail ed) {
+	
+		persist(ed);	
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<ExercisePlanDetail> findNextExerice(int scheduleid, int id) {
 		Criteria criteria = createEntityCriteria().add(Restrictions.gt("id", id-1));
 		criteria.add(Restrictions.eq("schedule_id", scheduleid));
 		criteria.setMaxResults(2);
 		return (List<ExercisePlanDetail>) criteria.list();
+
+		
+
 	}
 	
 }
