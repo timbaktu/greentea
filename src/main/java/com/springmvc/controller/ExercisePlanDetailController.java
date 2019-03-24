@@ -57,10 +57,14 @@ public class ExercisePlanDetailController {
     @RequestMapping(value = "/nextexercise/{schedule_id}/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ExercisePlanDetailBean>>  listNextExercise(@PathVariable("schedule_id") int scheduleid,@PathVariable("id") int id) {
   	   
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String uname  = authentication.getName().toString();
+
+        String exerciseplandetaildone = service.doneExerice(scheduleid,id,uname);
+        
+        
     	   List<ExercisePlanDetail> exerciseplandetails = service.findNextExerice(scheduleid,id);
        List<ExercisePlanDetailBean> exerciseplandetailsbean  = new ArrayList<ExercisePlanDetailBean>();
-       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-       String uname  = authentication.getPrincipal().toString();
        for(ExercisePlanDetail exerciseplandetail : exerciseplandetails) {
        	ExercisePlanDetailBean exerciseplandetailbean = new ExercisePlanDetailBean();
        	ExercisePlanDetailMapper.createExercisePlanDetailBean(exerciseplandetailbean, exerciseplandetail);
